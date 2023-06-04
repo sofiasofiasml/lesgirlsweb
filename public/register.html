@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <META HTTP-EQUIV="REFRESH" CONTENT="1;URL=http://lesgirls.es/"> -->
+    <title>LesGirls</title>
+    <link rel="shortcut icon" href="img/title.png"> 
+    <link type="text/css" rel="stylesheet" media="all" href="style.css" />
+    <link  rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hurricane&display=swap" rel="stylesheet">
+    <link href='calendar.css' rel='stylesheet' />
+    <script src='calendar.js'></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Shrikhand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Shrikhand&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <header>
+        <div class="overlay">
+            <br>
+            <br>
+            <h1><a href="index.html">LesGirls</a></h1>
+            <!-- <p class="paraf">Mujeres lesbianas (lesbian), bisexuales, transexuales de Barcelona (BCN) con la intención de hacer quedadas, conocer a gente y amistades</p> -->
+            <div class="socialL">
+                <a href="https://chat.whatsapp.com/LW62XW85Q2yCuiJgjvljkF"><img src="img/whatsapp-brands.png" alt="whatsapp" width="30px"></a>
+                &nbsp;&nbsp;&nbsp;
+                <a href=" https://t.me/joinchat/neoZsnH3bas5M2Q0"><img src="img/telegram-brands.png" alt="telegram" width="30px"></a>
+                &nbsp;&nbsp;&nbsp;
+                <a href="https://www.instagram.com/lesgirlsoficial/"><img src="img/instagram-brands.png" alt="instagram" width="30px"></a>
+                &nbsp;&nbsp;&nbsp;
+                <a href = "mailto:sofia.martinez.lopez.98@gmail.com"><img src="img/google-plus-g-brands.png" alt="google" width="30px"></a>
+            </div>
+            <img id="img-banner" src="img/les.webp" width="150px"  />
+        </div>
+        
+    </header>
+    
+   
+    <main>
+        <section class="container signup-container">
+          <fieldset>
+            <div>
+              <img src="./img/signup.svg">
+              <!--https://www.visualpharm.com/free-icon-->
+             </div>
+            <div>
+              <label for="mail">Email</label> <br>
+             <input type="email" id="mail" name="mail"/>
+           </div>
+            <div>
+             <label for="password">Password</label> <br>
+             <input type="password" id="password" name="password"/> <br>
+            </div>
+            <button id="signUp">Signup</button>
+          </fieldset>
+        </section>
+        <div class="feedbackContainer failure">
+          <div class="feedbackIcon"></div>
+          <p class="feedbackMessage">Signing up failed</p>
+        </div>
+      </main>
+    
+    <!-- Javascript -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    
+    <script src="https://cdn.ckeditor.com/ckeditor5/32.0.0/classic/ckeditor.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+    <script type="text/javascript" src="initFirebase.js"></script>
+    <script type="text/javascript" src="core.js"></script>
+    <script type="text/javascript" src="client.js"></script>
+    <script type="text/javascript" src="gfx.js"></script>
+    <script type="text/javascript" src="logic.js"></script>
+    <script type="text/javascript" src="world.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script type="text/javascript" src="swiper.min.js"></script>
+    <!-- Arracncamos app -->
+    <script>CORE.init()</script>
+</body>
+</html>
