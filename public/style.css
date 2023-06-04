@@ -42,7 +42,9 @@ button, input{
   font-family: 'ABeeZee', sans-serif;
   
 }
-
+.ck-editor__editable {
+  max-height: 200px;
+}
 @media (min-width: 40em) {
   body {
     grid: 'header header' auto
@@ -230,7 +232,9 @@ ul{
   /* background:  linear-gradient(to right bottom, #a4cd88 50%, #c3deb1 50.1%); */
   border-radius: 20px;
   padding-bottom: 100px;
-
+  overflow-y: scroll; 
+  height:400px;
+  margin-top: 10px;
 }
 
 .Evento .content{

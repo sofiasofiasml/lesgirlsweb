@@ -165,21 +165,30 @@ var LOGIC = {
 
     delateEvent: function(event)
     {
-        let person = prompt("Contraseña para borrar:", "");
-        if (person == CORE.paswordEliminar ||
-           auth.currentUser.email == CORE.admin1 || auth.currentUser.email == CORE.admin2)
-           {
-            delateEvenDB(event); 
-            document.location.reload();
+        if(!auth.currentUser)
+        {
+            alert("Inicia Sesión"); 
+            firebase.auth().signInWithPopup(provider);
         }
-       
+        if(auth.currentUser)
+        {
+            let person = prompt("Contraseña para borrar:", "");
+            if (person == CORE.paswordEliminar ||
+               auth.currentUser.email == CORE.admin1 || auth.currentUser.email == CORE.admin2)
+               {
+                delateEvenDB(event); 
+                document.location.reload();
+            }
+
+        }
+        
     },
     seditEvent: function()
     {
         // let person = prompt("Contraseña para borrar:", "");
         // if (person == CORE.paswordEliminar) {
             var title = document.querySelector("#nameEditEvent").value; 
-            var content= GFX.createLeerMas(CORE.editors.NewEventEditDescription.getData(),CORE.idEdit); 
+            var content= CORE.editors.NewEventEditDescription.getData(); //GFX.createLeerMas(CORE.editors.NewEventEditDescription.getData(),CORE.idEdit); 
             var date= document.querySelector("#dateEditEvent").value; 
             var dateFin= document.querySelector("#dateEventEditFinish").value; 
             var hour= document.querySelector("#horaEditEvent").value; 

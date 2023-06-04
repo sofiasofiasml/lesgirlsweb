@@ -263,7 +263,8 @@ var GFX =
         // initDescription += "<span id='dots"+id+"'>...</span><span id='more"+id+"' style='display: none'>"
         // var finDescription = descriptionEvent.innerHTML.substring(120, descriptionEvent.length);
         // finDescription = finDescription +"</span>"; 
-        initDescription = GFX.createLeerMas(descriptionEvent.innerHTML, id); 
+        // initDescription = GFX.createLeerMas(descriptionEvent.innerHTML, id); 
+        initDescription =  descriptionEvent.innerHTML; 
         
 
         if(!image || image =="")
@@ -445,7 +446,7 @@ var GFX =
         descriptionEvent.appendChild(imgEvent); 
         cont1Event.appendChild(nameEvent); 
         cont1Event.appendChild(descriptionEvent); 
-        cont1Event.appendChild(ReadMore); 
+        // cont1Event.appendChild(ReadMore); 
         cont1Event.appendChild(AsisDescEvent); 
         // cont1Event.appendChild(AsistenciaEvent); 
         cont1Event.appendChild(bSubmit); 
