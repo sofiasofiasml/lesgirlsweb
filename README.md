@@ -1,4 +1,4 @@
-### Girl-bcn
+### LesGirls
 
 
 Para hacer lo del firebase es seguir este video [link](https://www.youtube.com/watch?v=8eFHnC70bYk)
