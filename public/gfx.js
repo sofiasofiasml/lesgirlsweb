@@ -335,7 +335,8 @@ var GFX =
         var descriptionEvent = document.createElement("div");
         descriptionEvent.classList.add("description-event");
         descriptionEvent.innerHTML =  CORE.DicEvents[indexEvent].content; 
-        descriptionEvent.style.fontWeight = "900";
+        descriptionEvent.style.fontWeight = "200";
+        descriptionEvent.style.display = "none";
         //Poner LINK en los links
         if(descriptionEvent.querySelectorAll("a"))
         {
@@ -358,7 +359,7 @@ var GFX =
         // var AsistenciaEvent = document.createElement("input"); 
         var AsisDescEvent = document.createElement("label"); 
         AsisDescEvent.innerText= "\n"; 
-        AsisDescEvent.style.fontWeight = "900";
+        AsisDescEvent.style.fontWeight = "200";
         
         // AsistenciaEvent.id="Asistencia"+CORE.DicEvents[indexEvent].id; 
         // AsistenciaEvent.setAttribute("class", "AsistenciaInput");
@@ -369,15 +370,24 @@ var GFX =
         bSubmit.setAttribute("class", "submitAsistencia");
         bSubmit.setAttribute("name", CORE.DicEvents[indexEvent].id);
         bSubmit.value = "Apuntarse"; 
-        bSubmit.style.fontWeight = "900";
+        bSubmit.style.fontWeight = "200";
         bSubmit.setAttribute("onclick", "GFX.addAsistent(this)");
+
+        var bInfo = document.createElement("input"); 
+        bInfo.setAttribute("type", "submit");
+        bInfo.setAttribute("class", "bInfo");
+        bInfo.setAttribute("name", CORE.DicEvents[indexEvent].id);
+        bInfo.value = "Más información"; 
+        bInfo.style.fontWeight = "200";
+        bInfo.setAttribute("onclick", "GFX.seeInfo(this)");
+
         var ulEvent = document.createElement("ul");
         ulEvent.setAttribute("id", "ul"+CORE.DicEvents[indexEvent].id);
         if(CORE.DicEvents[indexEvent].asistentes){
             for (var i = 0; i<CORE.DicEvents[indexEvent].asistentes.length; i++){
                 var liEvent = document.createElement("li"); 
                     liEvent.innerText = CORE.DicEvents[indexEvent].asistentes[i].charAt(0).toUpperCase() + CORE.DicEvents[indexEvent].asistentes[i].slice(1); 
-                    liEvent.style.fontWeight = "900";
+                    liEvent.style.fontWeight = "200";
                     liEvent.setAttribute("class", "li"+CORE.DicEvents[indexEvent].id+"-"+i);
 
                 var delateli = document.createElement("div");
@@ -399,11 +409,11 @@ var GFX =
             contEvent.classList.add("ContadorAsistentes"+CORE.DicEvents[indexEvent].id);
             if(CORE.DicEvents[indexEvent].asistentes){
                 contEvent.innerText = "Asistentes: "+CORE.DicEvents[indexEvent].asistentes.length; 
-                contEvent.style.fontWeight = "900";
+                contEvent.style.fontWeight = "200";
             }
             else{
                 contEvent.innerText = "Asistentes: 0"; 
-            contEvent.style.fontWeight = "900";
+            contEvent.style.fontWeight = "200";
         }
 
         var ReadMore = document.createElement("a"); 
@@ -443,12 +453,12 @@ var GFX =
         this.colorBackgroundEvent( CORE.DicEvents[indexEvent].categoria, div1Event); 
         
         
-        descriptionEvent.appendChild(imgEvent); 
+        cont1Event.appendChild(imgEvent); 
         cont1Event.appendChild(nameEvent); 
         cont1Event.appendChild(descriptionEvent); 
         // cont1Event.appendChild(ReadMore); 
         cont1Event.appendChild(AsisDescEvent); 
-        // cont1Event.appendChild(AsistenciaEvent); 
+        cont1Event.appendChild(bInfo); 
         cont1Event.appendChild(bSubmit); 
         cont1Event.appendChild(ulEvent); 
         cont1Event.appendChild(contEvent); 
@@ -458,6 +468,22 @@ var GFX =
         div1Event.appendChild(cont1Event); 
         CORE.addEvents.appendChild(div1Event); 
     }, 
+    seeInfo: function(event)
+    {
+        var divE = document.querySelector("#Evento"+event.name+" .description-event"); 
+        
+        var Info = document.querySelector("#Evento"+event.name+" .bInfo"); 
+        if(divE.style.display === "none")
+        {
+            divE.style.display ="block"; 
+            Info.value ="Menos información"; 
+        }
+        else{
+            divE.style.display = "none"; 
+            Info.value ="Más información"; 
+
+        }
+    },
     ShowAgenda: function(msg)
     {
         var divShareAgenda = document.querySelector("#shareAgenda"); 

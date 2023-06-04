@@ -361,12 +361,16 @@ var LOGIC = {
                 break; 
             }
         }
-        var StringCopyPortapapeles= "*"+TitleEvent+"* \nFecha: "+ LOGIC.WhatDayWeekIs(DateInitEvent)+" "+ DateInitEvent.toLocaleDateString("es-ES")+ "- "+ LOGIC.WhatDayWeekIs(DateFinishEvent)+" "+DateFinishEvent.toLocaleDateString("es-ES") +" Hora: "+ HourEvent+ "\n"+ ContentEvent +"\n"+ imageEvent; 
+        var StringCopyPortapapeles= "*"+TitleEvent+"* \nFecha: "+ LOGIC.WhatDayWeekIs(DateInitEvent)+" "+ 
+        DateInitEvent.toLocaleDateString("es-ES")+ "- "+ LOGIC.WhatDayWeekIs(DateFinishEvent)+" "+
+        DateFinishEvent.toLocaleDateString("es-ES") +" Hora: "+ HourEvent+ "\n"+ ContentEvent +"\n"+ 
+        imageEvent+ "\nApúntate en:  https://lesgirlsweb.web.app/#Evento"+CORE.DicEvents[i].id; 
+
         var div = document.createElement("div");
         StringCopyPortapapeles = LOGIC.URLify(StringCopyPortapapeles); 
         div.innerHTML = StringCopyPortapapeles;
         StringCopyPortapapeles = div.textContent || div.innerText || "";
-        StringCopyPortapapeles += "\nPara más información entra en la web: https://lesgirls-8ebf0.web.app/ "; 
+        StringCopyPortapapeles += "\nPara más información entra en la web: https://lesgirlsweb.web.app/ "; 
         StringCopyPortapapeles = StringCopyPortapapeles.replace("...", "");
         const el = document.createElement('textarea');
         el.value = StringCopyPortapapeles;	//str is your string to copy

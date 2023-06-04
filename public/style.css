@@ -231,26 +231,44 @@ ul{
 .Evento{
   /* background:  linear-gradient(to right bottom, #a4cd88 50%, #c3deb1 50.1%); */
   border-radius: 20px;
-  padding-bottom: 100px;
-  overflow-y: scroll; 
-  height:400px;
+  padding-bottom: 20px;
+  /* overflow-y: scroll;  */
+  /* height:200px; */
   margin-top: 10px;
 }
 
 .Evento .content{
   margin-left: 20px;
   color: #000000;
+  font-size: 12px;
+}
+.Evento ul{
+  display: flex;
+  flex-direction: column; 
+  /* flex-wrap: wrap; */
+}
+.Evento li{
+  font-weight: 100;
 }
 .ImageOption{
   color: #000000 !important;
 }
 .Evento .content h4{
-  font-size: 20px;
+  font-size: 15px;
   margin-bottom: 10px;
 }
 /*pantalla pequeña movil*/
+/* .description-event 
+{
+ display: none ;
+} */
+.img_Event
+{
+  width: 100px;
+  float: left;
+}
 .Evento .content .description-event img{
-  height: 150px;
+  height: 100px;
   margin-left: 19%;
   
 }
@@ -282,11 +300,12 @@ ul{
 /*pantalla grande pc*/
 @media only screen and (min-width: 500px) {
   .Evento .content .description-event img{
-    height: 150px;
+    height: 100px;
     float: right;
     margin-right: 50px;
     
   }
+  
   
 }
 
@@ -298,6 +317,7 @@ ul{
     margin-left: 20%;
   
   }
+  
 }
 /* Votacion */
 .votacion:hover{
@@ -430,13 +450,13 @@ ul{
   margin-right: 5%; 
   right: 20px;
   top: 20px;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   background: rgb(167, 7, 7);
   color: #fff;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 20;
-  line-height: 20px;
+  line-height: 16px;
   text-align: center;
   border-radius: 50%;
   cursor: pointer;
@@ -820,6 +840,16 @@ input:hover, .delateEvent:hover, .shareEvent:hover
 
     grid-template-columns: repeat(2, 1fr);
     
+  }
+  .Evento .content h4
+  {
+    
+    font-size: 13px;
+  }
+  .img_Event
+  {
+    height: 70px;
+    width: 70px;
   }
 }
 
