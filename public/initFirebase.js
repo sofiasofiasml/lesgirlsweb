@@ -94,7 +94,7 @@ const firebaseConfig = {
     GFX.displayButtonRegisterGoogle(); 
  }
  signOutWithGoogleButton.addEventListener('click', googlesingOut);
-//TELEFONO
+//BD
 
 
 function insertData(data, name){
@@ -383,6 +383,7 @@ function gotData(data)
         firstDay: 1,//  1(Monday) this can be changed to 0(Sunday) for the USA system
         locales: 'es',
         eventColor: '#30C7B5',
+        contentHeight:"auto",
         dateClick: function(info) {
             
             GFX.hiddenEvents(info.dateStr); 
