@@ -241,15 +241,12 @@ var GFX =
         // }
         
         
-
-
-        var infoProcess = document.querySelector("#UploadImageProcess"); 
+        var valueImage= document.querySelector(".imagenUpload");
         if(CORE.imageUploadURL==""){
             var image = 'img/les.webp'; 
-            if(infoProcess){
-                if(infoProcess.innerText == 'Imagen Subida')
-                    var image = CORE.imageUploadURL; 
-            }
+            if(categoria == 'SubirImagen')
+                var image =valueImage.value; 
+            
         }
         else
             var image = CORE.imageUploadURL; 
