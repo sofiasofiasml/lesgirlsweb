@@ -866,7 +866,9 @@ input:hover, .delateEvent:hover, .shareEvent:hover
  {
   display: none;
 }
-
+a.fc-daygrid-event.fc-daygrid-dot-event.fc-event.fc-event-start.fc-event-end.fc-event-future {
+  width: 6px;
+}
 .fc-daygrid-event-harness {
   margin-top: 0 !important;
 }
