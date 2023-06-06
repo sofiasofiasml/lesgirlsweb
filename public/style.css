@@ -1033,6 +1033,10 @@ td, .fc-scrollgrid-sync-inner,
   h1{
       font-size:22px;
   }
+  header h1, header h1 a {
+
+    font-size: 15vw;
+  }
   .contenedor-imagenes{
       width: 98%;
   }
