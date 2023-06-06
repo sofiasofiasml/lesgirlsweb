@@ -361,6 +361,7 @@ var LOGIC = {
                 break; 
             }
         }
+
         var StringCopyPortapapeles= "*"+TitleEvent+"* \nFecha: "+ LOGIC.WhatDayWeekIs(DateInitEvent)+" "+ 
         DateInitEvent.toLocaleDateString("es-ES")+ "- "+ LOGIC.WhatDayWeekIs(DateFinishEvent)+" "+
         DateFinishEvent.toLocaleDateString("es-ES") +" Hora: "+ HourEvent+ "\n"+ ContentEvent +"\n"+ 

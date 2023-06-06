@@ -329,8 +329,10 @@ var GFX =
         var titleUpdate = CORE.DicEvents[indexEvent].title.charAt(0).toUpperCase() +CORE.DicEvents[indexEvent].title.slice(1);
         var mydate = new Date(valueDate); 
         var mydateFin = new Date(valueDateFin); 
-       
-        nameEvent.innerText = titleUpdate + " Fecha: "+  mydate.toLocaleDateString("es-ES") +"-"+ mydateFin.toLocaleDateString("es-ES")+" Hora: "+valueHour+ " Organizador: "+ valueOrganizer; 
+        var dias=["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"];
+
+        
+        nameEvent.innerText = titleUpdate + " Fecha: "+dias[mydate.getUTCDay()]+ " "+  mydate.toLocaleDateString("es-ES") +" - "+ dias[mydateFin.getUTCDay()] +" "+ mydateFin.toLocaleDateString("es-ES")+" Hora: "+valueHour+ " Organizador: "+ valueOrganizer; 
         
         var descriptionEvent = document.createElement("div");
         descriptionEvent.classList.add("description-event");
