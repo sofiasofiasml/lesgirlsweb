@@ -146,8 +146,8 @@ var LOGIC = {
         for(var i=0; i< CORE.DicEvents.length; i++){
             if(CORE.DicEvents[i].id == Posid)
             {
-                if (confirm('Vas a borrar un asistente: '+CORE.DicEvents[i].asistentes[AsistentPos])) {
-                    if(auth.currentUser.email == CORE.DicEvents[i].asistentes[AsistentPos] ||
+                if (confirm('Vas a borrar un asistente: '+CORE.DicEvents[i].asistentes[AsistentPos].split('/')[0])) {
+                    if(auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[AsistentPos].split('/')[1]) ||
                          auth.currentUser.email == CORE.admin1 || auth.currentUser.email == CORE.admin2)
                     {
                         delateasistentEvenDB(event); 
@@ -173,11 +173,14 @@ var LOGIC = {
         if(auth.currentUser)
         {
             let person = prompt("Contraseña para borrar:", "");
-            if (person == CORE.paswordEliminar ||
-               auth.currentUser.email == CORE.admin1 || auth.currentUser.email == CORE.admin2)
-               {
-                delateEvenDB(event); 
-                document.location.reload();
+            for (var i =0; i<  CORE.admins.length; i++)
+            {
+                if (person == LOGIC.decrypt_data(CORE.paswordEliminar) ||
+                auth.currentUser.email == LOGIC.decrypt_data(CORE.admins[i]))
+                {
+                    delateEvenDB(event); 
+                    document.location.reload();
+                }
             }
 
         }
@@ -433,6 +436,54 @@ var LOGIC = {
         const InitEmail = document.querySelector("");
 
     }, 
+    encrypt_data:function(string) {
+        string = unescape(encodeURIComponent(string));
+        var newString = '',
+           char, nextChar, combinedCharCode;
+        for (var i = 0; i < string.length; i += 2) {
+        char = string.charCodeAt(i);
+
+      if ((i + 1) < string.length) {
+
+
+      nextChar = string.charCodeAt(i + 1) - 31;
+
+
+      combinedCharCode = char + "" + nextChar.toLocaleString('en', {
+       minimumIntegerDigits: 2
+      });
+
+      newString += String.fromCharCode(parseInt(combinedCharCode, 10));
+
+      } else {
+
+
+      newString += string.charAt(i);
+      }
+      }
+      return newString.split("").reduce((hex,c)=>hex+=c.charCodeAt(0).toString(16).padStart(4,"0"),"");
+    },
+    decrypt_data:function(string) {
+
+        var newString = '',
+        char, codeStr, firstCharCode, lastCharCode;
+        string = string.match(/.{1,4}/g).reduce((acc,char)=>acc+String.fromCharCode(parseInt(char, 16)),"");
+        for (var i = 0; i < string.length; i++) {
+        char = string.charCodeAt(i);
+        if (char > 132) {
+        codeStr = char.toString(10);
+  
+        firstCharCode = parseInt(codeStr.substring(0, codeStr.length - 2), 10);
+  
+        lastCharCode = parseInt(codeStr.substring(codeStr.length - 2, codeStr.length), 10) + 31;
+  
+        newString += String.fromCharCode(firstCharCode) + String.fromCharCode(lastCharCode);
+        } else {
+        newString += string.charAt(i);
+        }
+        }
+        return newString;
+    },  
     // cambiarIDIfRepite: function()
     // {
         

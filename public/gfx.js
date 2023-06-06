@@ -148,6 +148,8 @@ var GFX =
     {
         seeData("Eventos"); 
         seeData("Votation"); 
+        seeData("PassWord"); 
+        seeData("Admin"); 
     },
     addAsistent:function(event)
     {
@@ -163,7 +165,7 @@ var GFX =
                 if(CORE.DicEvents[i].id == event.name)
                 {
                     for(var j=0; j< CORE.DicEvents[i].asistentes.length; j++){
-                        if( auth.currentUser.email == CORE.DicEvents[i].asistentes[j])
+                        if( auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[j].split('/')[1]))
                         evalurarEmailExistente =1; 
                     }
                 }
@@ -171,13 +173,18 @@ var GFX =
             }
             if(evalurarEmailExistente == 0)
             {
-                // var value = document.querySelector('#Asistencia'+event.name).value; 
-                writeNewPost(event.name, 'asistentes', auth.currentUser.email) 
-                this.seeAsistentes(event,  auth.currentUser.email); 
-                // document.querySelector('#Asistencia'+event.name).value = ""; 
-                var el = document.querySelector('#Evento'+event.name);
-                el.remove(); // Removes the div with the 'div-02' id
-                document.location.reload();
+                var value = document.querySelector('#Asistencia'+event.name).value; 
+                if(value!="")
+                {
+                    writeNewPost(event.name, 'asistentes', value) 
+                    this.seeAsistentes(event,  value); 
+                    // document.querySelector('#Asistencia'+event.name).value = ""; 
+                    var el = document.querySelector('#Evento'+event.name);
+                    el.remove(); // Removes the div with the 'div-02' id
+                    document.location.reload();
+                }
+                else
+                    alert("Introduce nombre"); 
             }
             else{
                 alert("Ya estas apuntado en el evento"); 
@@ -358,14 +365,15 @@ var GFX =
         imgEvent.setAttribute("class", "img_Event");
         
         
-        // var AsistenciaEvent = document.createElement("input"); 
+        var AsistenciaEvent = document.createElement("input"); 
         var AsisDescEvent = document.createElement("label"); 
         AsisDescEvent.innerText= "\n"; 
         AsisDescEvent.style.fontWeight = "200";
         
-        // AsistenciaEvent.id="Asistencia"+CORE.DicEvents[indexEvent].id; 
-        // AsistenciaEvent.setAttribute("class", "AsistenciaInput");
-        
+        AsistenciaEvent.id="Asistencia"+CORE.DicEvents[indexEvent].id; 
+        AsistenciaEvent.setAttribute("class", "AsistenciaInput");
+        AsistenciaEvent.setAttribute("placeholder", "Nombre");
+
         
         var bSubmit = document.createElement("input"); 
         bSubmit.setAttribute("type", "submit");
@@ -388,7 +396,7 @@ var GFX =
         if(CORE.DicEvents[indexEvent].asistentes){
             for (var i = 0; i<CORE.DicEvents[indexEvent].asistentes.length; i++){
                 var liEvent = document.createElement("li"); 
-                    liEvent.innerText = CORE.DicEvents[indexEvent].asistentes[i].charAt(0).toUpperCase() + CORE.DicEvents[indexEvent].asistentes[i].slice(1); 
+                    liEvent.innerText = CORE.DicEvents[indexEvent].asistentes[i].split('/')[0].charAt(0).toUpperCase() + CORE.DicEvents[indexEvent].asistentes[i].split('/')[0].slice(1); 
                     liEvent.style.fontWeight = "200";
                     liEvent.setAttribute("class", "li"+CORE.DicEvents[indexEvent].id+"-"+i);
 
@@ -458,7 +466,7 @@ var GFX =
         cont1Event.appendChild(imgEvent); 
         cont1Event.appendChild(nameEvent); 
         cont1Event.appendChild(descriptionEvent); 
-        // cont1Event.appendChild(ReadMore); 
+        cont1Event.appendChild(AsistenciaEvent); 
         cont1Event.appendChild(AsisDescEvent); 
         cont1Event.appendChild(bInfo); 
         cont1Event.appendChild(bSubmit); 

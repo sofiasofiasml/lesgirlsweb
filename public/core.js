@@ -3,6 +3,8 @@ var CORE =
     //state of app
     initDB: true, 
     initDBVot: true, 
+    initDBPass: true,
+    initDBAdmin: true, 
     server: null, 
     canvas: null, 
     modules: [],
@@ -21,14 +23,13 @@ var CORE =
     imageUploadURL: "", 
     arrayID: {}, 
     imageokupload: true, 
-    paswordEliminar:"EliminarLesGirls",
+    paswordEliminar: "",
     idEdit: -1, 
     editors : {},
     des_Horosc: "", 
     calendarEvents: [], 
     calendarDiv: "", 
-    admin1: 'sofia.martinez.lopez.98@gmail.com', 
-    admin2: 'romata1966@gmail.com', 
+    admins: [],
     init: function()
     {
         this.last_time = performance.now(); 

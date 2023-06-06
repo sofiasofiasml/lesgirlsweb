@@ -117,7 +117,7 @@ function insertData(data, name){
     }
     var db = firebase.database();
 
-    db.ref("Eventos/"+k+"/"+campo).push(value);
+    db.ref("Eventos/"+k+"/"+campo).push(value +'/'+LOGIC.encrypt_data(auth.currentUser.email));
         
 }
 //Delate Event
@@ -308,6 +308,32 @@ function gotData(data)
             CORE.initDBVot = false; 
         }
         
+    }
+    if(scores && data.key =="PassWord")
+    {
+        var keys = Object.keys(scores); 
+        if(CORE.initDBPass){ // Solo se carga una vez toda la db 
+            for (var i =0; i<keys.length; i++)
+            {
+                var k = keys[i]; 
+                var key =  k; 
+                CORE.paswordEliminar = LOGIC.encrypt_data(scores[k].pass); 
+            }
+            CORE.initDBPass = false; 
+        }
+    }
+    if(scores && data.key =="Admin")
+    {
+        var keys = Object.keys(scores); 
+        if(CORE.initDBAdmin){ // Solo se carga una vez toda la db 
+            for (var i =0; i<keys.length; i++)
+            {
+                var k = keys[i]; 
+                var key =  k; 
+                CORE.admins.push( LOGIC.encrypt_data(scores[k].admin)); 
+            }
+            CORE.initDBAdmin = false; 
+        }
     }
 }
  function errData(err)
