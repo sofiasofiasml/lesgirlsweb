@@ -837,7 +837,7 @@ input:hover, .delateEvent:hover, .shareEvent:hover
 }
 .fc .fc-daygrid-day-frame
 {
-  height: 70px;
+  height: 60px;
   /* overflow: hidden; */
 }
 .fc-daygrid-day-events
@@ -859,7 +859,7 @@ input:hover, .delateEvent:hover, .shareEvent:hover
   display: none;
 }
 .fc-daygrid-event-harness.fc-daygrid-event-harness-abs {
-  top: 37px !important;
+  top: 27px !important;
 }
 .fc-event-title.fc-sticky,
 .fc-event-title-container
