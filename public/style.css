@@ -838,7 +838,51 @@ input:hover, .delateEvent:hover, .shareEvent:hover
 .fc .fc-daygrid-day-frame
 {
   height: 70px;
-  overflow: hidden;
+  /* overflow: hidden; */
+}
+.fc-daygrid-day-events
+{
+  display: flex;
+  flex-wrap:wrap;
+  max-height: 10px;
+  
+}
+.fc-event-title.fc-sticky {
+  display: none;
+}
+.fc-daygrid-day-events {
+  top: -10px;
+}
+.fc-event-title, 
+.fc-event-time
+{
+  display: none;
+}
+.fc-daygrid-event-harness.fc-daygrid-event-harness-abs {
+  top: 37px !important;
+}
+.fc-event-title.fc-sticky,
+.fc-event-title-container
+ {
+  display: none;
+}
+
+.fc-daygrid-event-harness {
+  margin-top: 0 !important;
+}
+.fc-state-highlight, .fc-unthemed .fc-today {
+    background-color: white;
+    border: 3px solid #f26122;
+}
+.fc-h-event .fc-event-main-frame {
+  display: flex;
+  height: 1px;
+}
+
+.fc .fc-daygrid-day-frame , 
+td, .fc-scrollgrid-sync-inner, 
+.fc-col-header-cell.fc-day.fc-day-sun, th{
+  outline: 0.5px solid #000000 !important;
 }
 /* #calendar {
   height:490px;
