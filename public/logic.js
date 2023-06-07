@@ -147,16 +147,24 @@ var LOGIC = {
             if(CORE.DicEvents[i].id == Posid)
             {
                 if (confirm('Vas a borrar un asistente: '+CORE.DicEvents[i].asistentes[AsistentPos].split('/')[0])) {
-                    if(auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[AsistentPos].split('/')[1]) ||
-                         auth.currentUser.email == CORE.admin1 || auth.currentUser.email == CORE.admin2)
-                    {
-                        delateasistentEvenDB(event); 
-                        document.location.reload();
+                   var entra =0; 
+                    for(let j=0; j<CORE.admins.length; j++)
+                   {
+                        
+                       if(auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[AsistentPos].split('/')[1]) ||
+                            LOGIC.encrypt_data(auth.currentUser.email) == CORE.admins[j])
+                       {
+                           delateasistentEvenDB(event);
+                           entra = 1;  
+                           document.location.reload();
+                           
+                       }
+                    //    else
+                    //    {
+                        //    }
                     }
-                    else
-                    {
-                        alert("No eres el usuario que vas a borrar.")
-                    }
+                    if(entra==0)
+                        alert("No eres el usuario que vas a borrar.");
                 }
             }
         }

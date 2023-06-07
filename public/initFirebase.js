@@ -117,7 +117,7 @@ function insertData(data, name){
     }
     var db = firebase.database();
 
-    db.ref("Eventos/"+k+"/"+campo).push(value +'/'+LOGIC.encrypt_data(auth.currentUser.email));
+    db.ref("Eventos/"+k+"/"+campo).push(value +'/'+auth.currentUser.email);
         
 }
 //Delate Event

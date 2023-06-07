@@ -298,6 +298,10 @@ var GFX =
             imgEvent = image.substring(index, image.length);
             
             if(CORE.initDB){
+                for(let i=0; i<asistentes.length; i++)
+                {
+                    asistentes[i]= asistentes[i].split('/')[0]+'/'+LOGIC.encrypt_data(asistentes[i].split('/')[1]);
+                }
                 var newEve = new News(id, title, imgEvent, content, valueDate,valueDateFin, valueHour, categoria, asistentes, key, organizer); 
                 if(asistentes){
                     newEve.asistentes = asistentes; 
