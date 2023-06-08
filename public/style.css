@@ -272,6 +272,13 @@ ul{
   margin-left: 19%;
   
 }
+.AsistenciaInput::placeholder {
+  color: rgb(70, 70, 70);
+}
+.bInfo
+{
+  margin: 5px;
+}
  p{
   color: black; 
 }

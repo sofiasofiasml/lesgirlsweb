@@ -395,6 +395,7 @@ var GFX =
         AsistenciaEvent.setAttribute("placeholder", "Nombre");
 
         
+        var brdiv = document.createElement("br"); 
         var bSubmit = document.createElement("input"); 
         bSubmit.setAttribute("type", "submit");
         bSubmit.setAttribute("class", "submitAsistencia");
@@ -417,7 +418,7 @@ var GFX =
             for (var i = 0; i<CORE.DicEvents[indexEvent].asistentes.length; i++){
                 var liEvent = document.createElement("li"); 
                     liEvent.innerText = CORE.DicEvents[indexEvent].asistentes[i].split('/')[0].charAt(0).toUpperCase() + CORE.DicEvents[indexEvent].asistentes[i].split('/')[0].slice(1); 
-                    liEvent.style.fontWeight = "200";
+                    liEvent.style.fontWeight = "600";
                     liEvent.setAttribute("class", "li"+CORE.DicEvents[indexEvent].id+"-"+i);
 
                 var delateli = document.createElement("div");
@@ -486,9 +487,10 @@ var GFX =
         cont1Event.appendChild(imgEvent); 
         cont1Event.appendChild(nameEvent); 
         cont1Event.appendChild(descriptionEvent); 
-        cont1Event.appendChild(AsistenciaEvent); 
-        cont1Event.appendChild(AsisDescEvent); 
         cont1Event.appendChild(bInfo); 
+        // cont1Event.appendChild(brdiv); 
+        cont1Event.appendChild(AsisDescEvent); 
+        cont1Event.appendChild(AsistenciaEvent); 
         cont1Event.appendChild(bSubmit); 
         cont1Event.appendChild(ulEvent); 
         cont1Event.appendChild(contEvent); 
