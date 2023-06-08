@@ -166,7 +166,13 @@ var GFX =
                 {
                     for(var j=0; j< CORE.DicEvents[i].asistentes.length; j++){
                         if( auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[j].split('/')[1]))
-                        evalurarEmailExistente =1; 
+                            evalurarEmailExistente =1; 
+                        for(var k=0; k< CORE.admins.length; k++)
+                        {
+                            if( LOGIC.encrypt_data(auth.currentUser.email) == CORE.admins[k])
+                                evalurarEmailExistente =0; 
+                        }
+
                     }
                 }
 
