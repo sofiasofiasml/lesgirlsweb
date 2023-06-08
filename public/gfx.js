@@ -198,6 +198,18 @@ var GFX =
         }
 
     },
+    imageOpen:function(event) {
+        // var largeImage = document.getElementById('largeImage');
+        // event.style.display = 'block';
+        // event.style.width=200+"px";
+        // event.style.height=200+"px";
+        var url=event.getAttribute('src');
+        window.open(url,'Image','width=largeImage.stylewidth,height=largeImage.style.height,resizable=1');
+        // img = '<img src="'+url+'">';
+        // popup = window.open();
+        // popup.document.write(img);                        
+        // popup.print();
+    },
     displayButtonRegisterGoogle: function()
     {
         const signInWithGoogleButton = document.getElementById('signInWithGoogle');
@@ -370,6 +382,7 @@ var GFX =
         imgEvent.alt = "img_event"; 
         imgEvent.title = "img_event"; 
         imgEvent.setAttribute("class", "img_Event");
+        imgEvent.setAttribute("onclick", "GFX.imageOpen(this)");
         
         
         var AsistenciaEvent = document.createElement("input"); 
