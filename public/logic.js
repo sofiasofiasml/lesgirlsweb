@@ -26,6 +26,10 @@ var LOGIC = {
         var valueImage= document.querySelector(".imagenUpload");
         var valueOrganizer= document.querySelector("#organizerEvent");
         
+        if(!auth.currentUser)
+        {
+            firebase.auth().signInWithPopup(provider);
+        }
         
 
         if(valueOrganizer.value!="" && valuenameEvent.value !="" && valueDate.value !="" && valueDateFin!="" && valueHour.value !="" ){
