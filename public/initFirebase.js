@@ -273,6 +273,7 @@ function gotData(data)
                 var categoria =  scores[k].categoria; 
                 var content =  scores[k].content;
                 var organizer =  scores[k].organizer;
+                organizer = organizer.split('/')[0] +"/"+ LOGIC.encrypt_data(organizer.split('/')[1]); 
                 var asistentes  = [];  
                 var asistenteskey = []; 
                 if(scores[k].asistentes){
@@ -318,6 +319,8 @@ function gotData(data)
                 var k = keys[i]; 
                 var key =  k; 
                 CORE.paswordEliminar = LOGIC.encrypt_data(scores[k].pass); 
+                
+               
             }
             CORE.initDBPass = false; 
         }

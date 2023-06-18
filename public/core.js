@@ -24,6 +24,7 @@ var CORE =
     arrayID: {}, 
     imageokupload: true, 
     paswordEliminar: "",
+    paswordEdit: "",
     idEdit: -1, 
     editors : {},
     des_Horosc: "", 

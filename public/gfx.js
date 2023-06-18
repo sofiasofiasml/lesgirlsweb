@@ -118,7 +118,7 @@ var GFX =
                 document.querySelector("#dateEventEditFinish").value = CORE.DicEvents[i].dateFin; 
                 document.querySelector("#horaEditEvent").value = CORE.DicEvents[i].hour; 
                 document.querySelector("#categoriaEdit").value = CORE.DicEvents[i].categoria; 
-                document.querySelector("#organizerEditEvent").value = CORE.DicEvents[i].organizer; 
+                document.querySelector("#organizerEditEvent").value = CORE.DicEvents[i].organizer.split('/')[0]; 
                 if(document.querySelector("#categoriaEdit").value=="SubirImagen")
                     GFX.selection2Value(document.querySelector("#categoriaEdit")); 
                 if(document.querySelector(".ImageOption2 .imagenUpload"))
@@ -242,7 +242,7 @@ var GFX =
         var valueDate= document.querySelector("#dateEvent");
         var valueDateFin= document.querySelector("#dateEventFinish");
         var valueHour= document.querySelector("#horaEvent");
-        var valueorganizerEvent = document.querySelector("#organizerEvent"); 
+        var valueorganizerEvent = document.querySelector("#organizerEvent").value +"/"+ auth.currentUser.email; 
 
         var select = document.getElementById('categoria');
         var valueCategoria = select.options[select.selectedIndex].value;
@@ -291,7 +291,7 @@ var GFX =
 
         if(!image || image =="")
             var image = 'img/les.webp'; 
-        var newEve = new News(id, valuenameEvent.value, image, initDescription, valueDate.value, valueDateFin.value, valueHour.value, categoria, "", [], valueorganizerEvent.value); 
+        var newEve = new News(id, valuenameEvent.value, image, initDescription, valueDate.value, valueDateFin.value, valueHour.value, categoria, "", [], valueorganizerEvent); 
         CORE.DicEvents[CORE.DicEvents.length]=newEve; 
         //var newEvenCalendar = new EventCalendar(valuenameEvent.value, valueDate.value, valueDate.value, ""); 
        // CORE.calendarEvents[CORE.calendarEvents.length]=newEvenCalendar;
@@ -351,7 +351,7 @@ var GFX =
         var valueDate= CORE.DicEvents[indexEvent].date;
         var valueDateFin= CORE.DicEvents[indexEvent].dateFin;
         var valueHour= CORE.DicEvents[indexEvent].hour;
-        var valueOrganizer= CORE.DicEvents[indexEvent].organizer;
+        var valueOrganizer= CORE.DicEvents[indexEvent].organizer.split('/')[0];
         var titleUpdate = CORE.DicEvents[indexEvent].title.charAt(0).toUpperCase() +CORE.DicEvents[indexEvent].title.slice(1);
         var mydate = new Date(valueDate); 
         var mydateFin = new Date(valueDateFin); 
@@ -401,7 +401,7 @@ var GFX =
         bSubmit.setAttribute("class", "submitAsistencia");
         bSubmit.setAttribute("name", CORE.DicEvents[indexEvent].id);
         bSubmit.value = "Apuntarse"; 
-        bSubmit.style.fontWeight = "200";
+        bSubmit.style.fontWeight = "800";
         bSubmit.setAttribute("onclick", "GFX.addAsistent(this)");
 
         var bInfo = document.createElement("input"); 
@@ -409,7 +409,7 @@ var GFX =
         bInfo.setAttribute("class", "bInfo");
         bInfo.setAttribute("name", CORE.DicEvents[indexEvent].id);
         bInfo.value = "Más información"; 
-        bInfo.style.fontWeight = "200";
+        bInfo.style.fontWeight = "800";
         bInfo.setAttribute("onclick", "GFX.seeInfo(this)");
 
         var ulEvent = document.createElement("ul");
@@ -418,7 +418,7 @@ var GFX =
             for (var i = 0; i<CORE.DicEvents[indexEvent].asistentes.length; i++){
                 var liEvent = document.createElement("li"); 
                     liEvent.innerText = CORE.DicEvents[indexEvent].asistentes[i].split('/')[0].charAt(0).toUpperCase() + CORE.DicEvents[indexEvent].asistentes[i].split('/')[0].slice(1); 
-                    liEvent.style.fontWeight = "600";
+                    liEvent.style.fontWeight = "800";
                     liEvent.setAttribute("class", "li"+CORE.DicEvents[indexEvent].id+"-"+i);
 
                 var delateli = document.createElement("div");
@@ -472,7 +472,7 @@ var GFX =
         editbutton.innerText = "Edit Evento"; 
         editbutton.setAttribute("class", "editEvent");
         editbutton.setAttribute("name", CORE.DicEvents[indexEvent].id);
-        editbutton.setAttribute("onclick", "GFX.toggleEditPopup(this)");
+        editbutton.setAttribute("onclick", "LOGIC.EditEventPass(this)");
         
         var cont1Event = document.createElement("div"); 
         cont1Event.classList.add("content"); 
@@ -484,7 +484,7 @@ var GFX =
         this.colorBackgroundEvent( CORE.DicEvents[indexEvent].categoria, div1Event); 
         
         
-        cont1Event.appendChild(imgEvent); 
+        div1Event.appendChild(imgEvent); 
         cont1Event.appendChild(nameEvent); 
         cont1Event.appendChild(descriptionEvent); 
         cont1Event.appendChild(bInfo); 

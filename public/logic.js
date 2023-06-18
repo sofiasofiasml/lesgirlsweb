@@ -181,16 +181,69 @@ var LOGIC = {
         if(auth.currentUser)
         {
             let person = prompt("Contraseña para borrar:", "");
+            
             for (var i =0; i<  CORE.admins.length; i++)
             {
-                if (person == LOGIC.decrypt_data(CORE.paswordEliminar) ||
-                auth.currentUser.email == LOGIC.decrypt_data(CORE.admins[i]))
+                if (person!=null && (person == LOGIC.decrypt_data(CORE.paswordEliminar) ||
+                auth.currentUser.email == LOGIC.decrypt_data(CORE.admins[i])))
                 {
                     delateEvenDB(event); 
                     document.location.reload();
                 }
             }
 
+        }
+        
+    },
+    EditEventPass: function(event)
+    {
+        if(!auth.currentUser)
+        {
+            alert("Inicia Sesión"); 
+            firebase.auth().signInWithPopup(provider);
+        }
+        if(auth.currentUser)
+        {
+            var IsOrganizer =0; 
+            var notPas =0; 
+            for(var j=0; j<CORE.DicEvents.length;j++)
+            {
+                if(event.name == CORE.DicEvents[j].id)
+                {
+                    if( auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[j].organizer.split('/')[1]))
+                    {
+                        GFX.toggleEditPopup(event);
+                        IsOrganizer =1; 
+                        break; 
+
+                    }
+                }
+
+            }
+            if(IsOrganizer ==0)
+            {
+                let person = prompt("Contraseña para editar:", "");
+                if(person !=null){
+                    for (var i =0; i<  CORE.admins.length; i++)
+                    {
+                        
+                        if (person == LOGIC.decrypt_data(CORE.paswordEliminar) ||
+                        auth.currentUser.email == LOGIC.decrypt_data(CORE.admins[i]))
+                        {
+                            GFX.toggleEditPopup(event);
+                            notPas =1; 
+                            break; 
+                        }
+                    }
+                    if(notPas ==0)
+                        alert('No eres el organizador de este event, ni admin de Lesgirls o has introducido mal la contraseña')
+
+                }
+            }
+
+                    
+            
+               
         }
         
     },
@@ -204,7 +257,14 @@ var LOGIC = {
             var dateFin= document.querySelector("#dateEventEditFinish").value; 
             var hour= document.querySelector("#horaEditEvent").value; 
             var categoria= document.querySelector("#categoriaEdit").value; 
-            var organizer= document.querySelector("#organizerEditEvent").value; 
+            var id = CORE.idEdit;  
+            for(var i=0; i< CORE.DicEvents.length; i++){
+                if(CORE.DicEvents[i].id == id)
+                {
+                    var organizer= document.querySelector("#organizerEditEvent").value +"/"+LOGIC.decrypt_data(CORE.DicEvents[i].organizer.split('/')[1]); 
+                    break; 
+                }
+            }
             if(categoria=="1" || categoria=="2" || categoria=="3" ||
             categoria=="4" || categoria=="5" || categoria=="6" || categoria=="7" ||
             categoria=="8")
@@ -372,17 +432,17 @@ var LOGIC = {
                 break; 
             }
         }
-
+        var URLactual = window.location; 
         var StringCopyPortapapeles= "*"+TitleEvent+"* \nFecha: "+ LOGIC.WhatDayWeekIs(DateInitEvent)+" "+ 
         DateInitEvent.toLocaleDateString("es-ES")+ "- "+ LOGIC.WhatDayWeekIs(DateFinishEvent)+" "+
         DateFinishEvent.toLocaleDateString("es-ES") +" Hora: "+ HourEvent+ "\n"+ ContentEvent +"\n"+ 
-        imageEvent+ "\nApúntate en:  https://lesgirls.es/agenda/#Evento"+CORE.DicEvents[i].id; 
+        imageEvent+ "\nApúntate en:  " + URLactual.href+"#Evento"+CORE.DicEvents[i].id; 
 
         var div = document.createElement("div");
         StringCopyPortapapeles = LOGIC.URLify(StringCopyPortapapeles); 
         div.innerHTML = StringCopyPortapapeles;
         StringCopyPortapapeles = div.textContent || div.innerText || "";
-        StringCopyPortapapeles += "\nPara más información entra en la web: https://lesgirls.es/agenda/ "; 
+        StringCopyPortapapeles += "\nPara más información entra en la web: "+URLactual.href; 
         StringCopyPortapapeles = StringCopyPortapapeles.replace("...", "");
         const el = document.createElement('textarea');
         el.value = StringCopyPortapapeles;	//str is your string to copy
