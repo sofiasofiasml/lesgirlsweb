@@ -28,16 +28,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee&family=Shrikhand&display=swap" rel="stylesheet">
 </head>
 <body>
     
-    <header>
+    <!-- <header>
         <div class="overlay">
             <br>
             <br>
             <h1><a href="index.html">LesGirls</a></h1>
-            <!-- <p class="paraf">Mujeres lesbianas (lesbian), bisexuales, transexuales de Barcelona (BCN) con la intención de hacer quedadas, conocer a gente y amistades</p> -->
             <div class="socialL">
                 <a href="https://chat.whatsapp.com/LW62XW85Q2yCuiJgjvljkF"><img src="img/whatsapp-brands.png" alt="whatsapp" width="30px"></a>
                 &nbsp;&nbsp;&nbsp;
@@ -50,13 +50,32 @@
             <img id="img-banner" src="img/les.webp" width="150px"  />
         </div>
         
+    </header> -->
+    <header class="header">
+        <div class="logo-header">
+            <a href=""><img src="img/les.webp" alt=""></a>
+        </div>
+        <div class="nav-menu">
+            <input type="checkbox" id="check">    
+            <label for="check" class="checkbtn">
+                <i class="menu-icon fa fa-bars"></i>
+            </label>
+            <ul>
+                <li><a href="">Inicio</a></li>
+                <!-- <li><a href="/quien-soy.html">Quien Soy</a></li>
+                <li><a href="">Servicios</a></li> -->
+                <li><a href = "mailto:sofia.martinez.lopez.98@gmail.com">Contacto</a></li>
+                <div class="text-center">
+                    <button class="BGoogle" id="signInWithGoogle">Login with your Google
+                    </button>
+                    <button class="BGoogle" id="singout" style="display: none;">Sing out  Google
+                    </button>
+                </div>
+            </ul>
+        </div>
     </header>
-    
     <nav>
-        <h2>Ideas/Votaciones</h2>
-        <ul id="ulnav">
-            
-        </ul>
+
         <div class="card">
             <div class="menu">
               <div class="toggle">
@@ -219,131 +238,45 @@
             <label>Link ver respuestas: </label>
             <input type="text" id="googleResp" name="googleResp">
 
-            <!-- <div id="addOtherInput"lll></div>
-            <br>
-            <button onclick="GFX.addInput()">+</button> -->
             <br><br>
                 <input type="submit" value="Enviar" onclick="LOGIC.writtenVotation()">
             </div>
         </div>
-
-        <!-- <div class="popup-InitUser" id="popup-InitUser">
-            <div class="overlay-InitUser"></div>
-            <div class="content-InitUser">
-                <div class="close-btn" onclick="GFX.togglePopupVot()">&times</div>
-            <h3>Iniciar Sesión</h3>
-            <label>Correo:</label>
-            <input type="text" id="Init_correo" name="nameVotation" placeholder="Correo" required>
-            <br>
-            <label>Contraseña: </label>
-            <input type="password" id="Init_password" name="googleaswer" placeholder="Password" required>
-            
-            <br><br>
-                <input type="submit" value="Enviar" onclick="LOGIC.InitUser(this)">
-            </div>
-        </div>
-
-        <div class="popup-RegisterUser" id="popup-RegisterUser">
-            <div class="overlay-RegisterUser"></div>
-            <div class="content-RegisterUser">
-                <div class="close-btn" onclick="GFX.togglePopupVot()">&times</div>
-            <h3>Registrar usuario</h3>
-            <label>Correo:</label>
-            <input type="text" id="Registar_correo" name="nameVotation" placeholder="Carreo" required>
-            <br>
-            <label>Contraseña: </label>
-            <input type="password" id="Registar_password" name="googleaswer" placeholder="Password" required>
-            
-            <br><br>
-                <input type="submit" value="Enviar" onclick="LOGIC.RegisterUser(this)">
-            </div>
-        </div> -->
+<!-- 
         <br>
         <div class="text-center">
             <button class="BGoogle" id="signInWithGoogle">Login with your Google
             </button>
             <button class="BGoogle" id="singout" style="display: none;">Sing out  Google
             </button>
-        </div>
-        <!-- <p class="paraf"><a href="#Evento8">Go Middle</a></p> -->
-        <p class="paraf" class="">Si no hay más de 2 personas apuntadas los planes se cancelan el día de antes. </p>
-        <!-- <h3>Estamos en <a href="http://lesgirls.es/">http://lesgirls.es/</a></h3>
-        <div class = "ticker-container">
-            <div id='test'></div>
         </div> -->
+        <p class="paraf" class="">Si no hay más de 2 personas apuntadas los planes se cancelan el día de antes. </p>
+        <br>
         <div id="mybutton">
             <button class="feedback" onclick="GFX.UPbotom()">Up</button>
             <button class="feedback" onclick="GFX.downbotom()">Down</button>
         </div>
-        <p class="paraf">Calendario de eventos: </p>
-        <div >
-            <div id='calendar'></div>
-        </div>
-        <h2>Eventos &nbsp;&nbsp;&nbsp; <button id = "ViewAllEvents" onclick="GFX.seeAllEvents()">Ver todos los eventos</button></h2> 
-        <div id="AddEvents"></div>
-
-        <div id="news"></div>
-       
-        <!-- <div>
-            <h3>Publicidad y locales del colectivo</h3>
-             -->
-        <!-- Swiper -->
-        <!-- <div id = "swip">
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="img/1.png" />
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://g.page/CaritaBonitaBarcelona?share"><img src="img/carita.jpg"
-                            alt="Carita Bonita"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://lambda.cat/"><img src="img/casalambda.jpg"
-                            alt="Casa Lambda"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://grupoarena.com/"><img src="img/arena.jpg"
-                            alt="Arena"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="http://nenis.info/"><img src="img/nenis.jpg"
-                            alt="Arena"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://www.facebook.com/melonpartybcn"><img src="img/melon.jpg"
-                            alt="melon party bcn"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://www.sala-apolo.com/es/clubs/churros-con-chocolate"><img src="img/apolo.jpg"
-                            alt="Apolo"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://caladona.org/agenda-caladona/"><img src="img/CLD.jpg"
-                            alt="CLD"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://barcelonasecreta.com/"><img src="img/bcnSecreta.png"
-                            alt="BcnSecreta"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://www.timeout.es/barcelona/es"><img src="img/timeOut.jpg"
-                            alt="TimeOut"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://inoutradio.com/"><img src="https://i.scdn.co/image/ab67656300005f1f22b19593db69274404783fa9"
-                            alt="inOutRadio"></a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="https://laculturanovalres.com/"><img src="img/laCulturaNoValRes.png"
-                            alt="inOutRadio"></a>
-                    </div>
-                    
-                </div>
-                <div class="swiper-pagination"></div>
+        <!-- <button id = "Filter" onclick="GFX.seeCalendar()">Desplegar Filtro</button> -->
+        <div id="DivCalendar" >
+            <p class="paraf">Calendario de eventos: </p>
+            <div >
+                <div id='calendar'></div>
             </div>
-        </div>  -->
-
+        </div>
+        <div id="EventsTrnasf">
+            <h2>Eventos &nbsp;&nbsp;&nbsp; <button id = "ViewAllEvents" onclick="GFX.seeAllEvents()">Ver todos los eventos</button></h2> 
+            <div id="AddEvents">
+                
+            </div>
+        </div>
+        <nav id="VotationNav">
+            <h2>Ideas/Votaciones</h2>
+            <ul id="ulnav">
+                
+            </ul>
+        </nav>
+        <div id="news"></div>
+        
         
     </main>
     <footer class="footer">
@@ -370,15 +303,7 @@
                         
                     </ul>
                 </div>
-                <!-- <div class="footer-col">
-                    <h4>Redes Sociales</h4>
-                    <div class="social-links">
-                        <a href="https://chat.whatsapp.com/LW62XW85Q2yCuiJgjvljkF"><img src="img/whatsapp-brands.png" alt="whatsapp" width="50%"></a>
-                        <a href=" https://t.me/joinchat/neoZsnH3bas5M2Q0"><img src="img/telegram-brands.png" alt="telegram" width="50%"></a>
-                        <a href="https://www.instagram.com/lesgirlsoficial/"><img src="img/instagram-brands.png" alt="instagram" width="50%"></a>
-                        <a href = "mailto:sofia.martinez.lopez.98@gmail.com"><img src="img/google-plus-g-brands.png" alt="google" width="50%"></a>
-                    </div>
-                </div> -->
+                
             </div>
         </div>
         

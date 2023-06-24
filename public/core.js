@@ -59,7 +59,8 @@ var CORE =
          if(document.title=="LesGirls"){
             CORE.createEditor( 'NewEventDescription' );
             CORE.createEditor( 'NewEventEditDescription' );
-     }
+        }
+ 
     }, 
     ReadJson: function(fichero)
     {
