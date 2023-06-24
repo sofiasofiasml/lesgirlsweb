@@ -359,6 +359,8 @@ var LOGIC = {
 
             var parent = document.getElementById('AddEvents');
             parent.innerHTML = "";
+            // parent.innerHTML = "<h2>Eventos &nbsp;&nbsp;&nbsp; <button id ='ViewAllEvents' onclick='GFX.seeAllEvents()'>Ver todos los eventos</button></h2>";
+
             var OrdenarDiv = []; 
             for(var i =0; i< listOrdenarId.length; i++)
             {
@@ -373,6 +375,17 @@ var LOGIC = {
             CORE.DicEvents = OrdenarDiv;
             delatenodeDBforTime(); 
         }
+
+        // let divCalendar = document.querySelector("#DivCalendar"); 
+        // let divEvents = document.querySelector("#EventsTrnasf"); 
+        // let CalendarHeight = divCalendar.clientHeight;
+        // let divVotationNav = document.querySelector("#VotationNav"); 
+        // let divFooter = document.querySelector("main"); 
+        // divEvents.style.transform = "translate(0px,-"+CalendarHeight+"px)";
+        // divVotationNav.style.transform = "translate(0px,-"+CalendarHeight+"px)";
+        // divFooter.style.height = divFooter.clientHeight-220 +"px"; 
+        
+        
     }, 
     saveImageUpload:function(downloadURL)
     {
@@ -454,6 +467,8 @@ var LOGIC = {
         el.select();
         document.execCommand('copy');	// Copy command
         alert("Copiado portapapeles");
+        document.location.reload();
+
 
     },
     WhatDayWeekIs:function(Fecha){

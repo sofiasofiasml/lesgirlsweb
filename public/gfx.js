@@ -396,12 +396,15 @@ var GFX =
 
         
         var brdiv = document.createElement("br"); 
-        var bSubmit = document.createElement("input"); 
-        bSubmit.setAttribute("type", "submit");
-        bSubmit.setAttribute("class", "submitAsistencia");
+        var divINPUT = document.createElement("div"); 
+        divINPUT.setAttribute("class", "InputElementsEvents");
+
+        var bSubmit = document.createElement("button"); 
+        bSubmit.setAttribute("type", "button");
+        bSubmit.setAttribute("class", "delateEvent fa fa-plus");
         bSubmit.setAttribute("name", CORE.DicEvents[indexEvent].id);
-        bSubmit.value = "Apuntarse"; 
-        bSubmit.style.fontWeight = "800";
+        // bSubmit.value = "+"; 
+        // bSubmit.style.fontWeight = "800";
         bSubmit.setAttribute("onclick", "GFX.addAsistent(this)");
 
         var bInfo = document.createElement("input"); 
@@ -414,6 +417,7 @@ var GFX =
 
         var ulEvent = document.createElement("ul");
         ulEvent.setAttribute("id", "ul"+CORE.DicEvents[indexEvent].id);
+        ulEvent.style.display = "none";
         if(CORE.DicEvents[indexEvent].asistentes){
             for (var i = 0; i<CORE.DicEvents[indexEvent].asistentes.length; i++){
                 var liEvent = document.createElement("li"); 
@@ -455,22 +459,22 @@ var GFX =
 
         var delatebutton = document.createElement("button"); 
         delatebutton.setAttribute("type", "button");
-        delatebutton.innerText = "Eliminar Evento"; 
-        delatebutton.setAttribute("class", "delateEvent");
+        // delatebutton.innerText = "Eliminar Evento"; 
+        delatebutton.setAttribute("class", "shareEvent fa fa-trash-o");
         delatebutton.setAttribute("name", CORE.DicEvents[indexEvent].id);
         delatebutton.setAttribute("onclick", "LOGIC.delateEvent(this)");
 
         var sharebutton = document.createElement("button"); 
         sharebutton.setAttribute("type", "button");
-        sharebutton.innerText = "Share Evento"; 
-        sharebutton.setAttribute("class", "shareEvent");
+        // sharebutton.innerText = "Share Evento"; 
+        sharebutton.setAttribute("class", "shareEvent fa fa-share-alt");
         sharebutton.setAttribute("name", CORE.DicEvents[indexEvent].id);
         sharebutton.setAttribute("onclick", "LOGIC.sshareEvent(this)");
 
         var editbutton = document.createElement("button"); 
         editbutton.setAttribute("type", "button");
-        editbutton.innerText = "Edit Evento"; 
-        editbutton.setAttribute("class", "editEvent");
+        // editbutton.innerText = "Edit Evento"; 
+        editbutton.setAttribute("class", "shareEvent fa fa-pencil-square-o");
         editbutton.setAttribute("name", CORE.DicEvents[indexEvent].id);
         editbutton.setAttribute("onclick", "LOGIC.EditEventPass(this)");
         
@@ -478,42 +482,81 @@ var GFX =
         cont1Event.classList.add("content"); 
         
         var div1Event = document.createElement("div"); 
+        var div1Img = document.createElement("div"); 
+        var divButtoms = document.createElement("div"); 
+        divButtoms.setAttribute("class", "Butt_Events");
+
         div1Event.classList.add("Evento"); 
         div1Event.setAttribute("id", "Evento"+CORE.DicEvents[indexEvent].id);
         
         this.colorBackgroundEvent( CORE.DicEvents[indexEvent].categoria, div1Event); 
         
-        
-        div1Event.appendChild(imgEvent); 
+        div1Img.appendChild(imgEvent); 
+        div1Event.appendChild(div1Img); 
         cont1Event.appendChild(nameEvent); 
-        cont1Event.appendChild(descriptionEvent); 
         cont1Event.appendChild(bInfo); 
         // cont1Event.appendChild(brdiv); 
         cont1Event.appendChild(AsisDescEvent); 
-        cont1Event.appendChild(AsistenciaEvent); 
-        cont1Event.appendChild(bSubmit); 
+        divINPUT.appendChild(AsistenciaEvent); 
+        divINPUT.appendChild(bSubmit); 
+        cont1Event.appendChild(divINPUT); 
         cont1Event.appendChild(ulEvent); 
-        cont1Event.appendChild(contEvent); 
-        cont1Event.appendChild(delatebutton); 
-        cont1Event.appendChild(sharebutton); 
-        cont1Event.appendChild(editbutton); 
+        cont1Event.appendChild(descriptionEvent); 
+        divButtoms.appendChild(delatebutton); 
+        divButtoms.appendChild(sharebutton); 
+        divButtoms.appendChild(editbutton); 
+        divButtoms.appendChild(contEvent); 
+        cont1Event.appendChild(divButtoms); 
         div1Event.appendChild(cont1Event); 
         CORE.addEvents.appendChild(div1Event); 
     }, 
     seeInfo: function(event)
     {
         var divE = document.querySelector("#Evento"+event.name+" .description-event"); 
+        var divAS = document.querySelector("#ul"+event.name); 
         
         var Info = document.querySelector("#Evento"+event.name+" .bInfo"); 
         if(divE.style.display === "none")
         {
             divE.style.display ="block"; 
+            divAS.style.display ="block"; 
             Info.value ="Menos información"; 
         }
         else{
             divE.style.display = "none"; 
+            divAS.style.display = "none"; 
             Info.value ="Más información"; 
 
+        }
+    },
+    seeCalendar: function(event)
+    {
+        let divFilter = document.querySelector("#Filter"); 
+        let divCalendar = document.querySelector("#DivCalendar"); 
+        let divEvents = document.querySelector("#EventsTrnasf"); 
+        let divVotationNav = document.querySelector("#VotationNav"); 
+        
+        let divFooter = document.querySelector("main"); 
+        let CalendarHeight = divCalendar.clientHeight;
+        if(divCalendar.style.visibility === "hidden")
+        {
+            divCalendar.style.visibility ="visible"; 
+            divFilter.innerHTML ="Ocultar Filtro"; 
+            divEvents.style.transform = "translate(0px,0px)"; 
+            divVotationNav.style.transform = "translate(0px,0px)"; 
+            divEvents.style.transition = "all 0.4s"; 
+            divVotationNav.style.transition = "all 0.4s"; 
+            // divFooter.style.height = divFooter.clientHeight-330 +"px"; 
+        }
+        else{
+            divCalendar.style.visibility = "hidden"; 
+            divFilter.innerHTML ="Desplegar Filtro"; 
+            divEvents.style.transform = "translate(0px,-"+CalendarHeight+"px)"; 
+            divVotationNav.style.transform = "translate(0px,-"+CalendarHeight+"px)"; 
+            // divFooter.style.height = divFooter.clientHeight-330 +"px"; 
+            divEvents.style.transition = "all 0.4s"; 
+            divVotationNav.style.transition = "all 0.4s"; 
+            
         }
     },
     ShowAgenda: function(msg)
@@ -535,31 +578,31 @@ var GFX =
     {
         switch (category) {
             case "1": // Senderismo
-                div1Event.setAttribute("style", "background:linear-gradient(to right bottom, #a4cd88 50%, #c3deb1 50.1%);");
+                div1Event.setAttribute("style", "border-top-color: green;");
               break;
             case "2": // Girls-bcn
-                div1Event.setAttribute("style", "background:linear-gradient(to right bottom, #c495e2 50%, #d9b8ec 50.1%);");
+                div1Event.setAttribute("style", "border-top-color: red;");
               break;
             case "3": // Fiesta/Bar --
-                div1Event.setAttribute("style", "background:linear-gradient(to right bottom, #fff8cd 50%, #fffade 50.1%)");
+                div1Event.setAttribute("style", "border-top-color: blue;");
               break;
             case "4": // Cultura ---
-                div1Event.setAttribute("style", "background:linear-gradient(to right bottom, #f6bbcb 50%, #f9d2dd 50.1%);");
+                div1Event.setAttribute("style", "border-top-color: yellow;");
               break;
             case "5": // Gastronomía ---
-                div1Event.setAttribute("style", "background:linear-gradient(to right bottom, #efab48 50%, #f4c887 50.1%);");
+                div1Event.setAttribute("style", "border-top-color: purple;");
               break;
             case "6": // Deporte --
-                div1Event.setAttribute("style", "background:linear-gradient(to right bottom, #aed6e3 50%, #cae4ec 50.1%);");
+                div1Event.setAttribute("style", "border-top-color: orange;");
               break;
             case "7": // Cine --
-                div1Event.setAttribute("style", "background:linear-gradient(to right bottom, #e24756 50%, #ec8790 50.1%);");
+                div1Event.setAttribute("style", "border-top-color: teal;");
                 break;
             case "8": // Juegos ---
-                div1Event.setAttribute("style", "background:linear-gradient(to right bottom, #e1f9f8 50%, #f7fdfd 50.1%);");
+                div1Event.setAttribute("style", "border-top-color: violet;");
               break;
             default: // Subir imagen 
-                div1Event.setAttribute("style", "background:linear-gradient(to right bottom, #c495e2 50%, #d9b8ec 50.1%);");
+                div1Event.setAttribute("style", "border-top-color: magenta;");
           }
           
     },

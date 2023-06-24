@@ -4,7 +4,7 @@
  *:before {
    box-sizing: inherit;
 	 /* background-color: #24262b; */
-	 background-color: #dbdbdb;
+	 /* background-color: #dbdbdb; */
 
  }
  
@@ -46,6 +46,10 @@ button, input{
 .ck-editor__editable {
   max-height: 200px;
 }
+/* #DivCalendar
+{
+  visibility: hidden;
+} */
 @media (min-width: 40em) {
   body {
     grid: 'header header' auto
@@ -55,8 +59,83 @@ button, input{
         / 12em 1fr;
   }
 }
-
-header { 
+header{
+  background-color: #0bb2aa;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem 2rem;
+  z-index: 4 !important;
+}
+.logo-header img{
+  width: 50px;
+}
+.nav-menu ul{
+  display: flex;
+  align-items: center;
+}
+.nav-menu li{
+  margin-right: 1rem;
+}
+.nav-menu a{
+  color: #fff;
+}
+.nav-menu li:last-child{
+  background:#4ad295;
+  padding: .25rem .75rem;
+  border-radius: .2rem;
+}
+.menu-icon img{
+  width: 30px;
+  height: 30px;
+  border-radius: 2px;
+}
+.menu-icon, #check , i.menu-icon.fa.fa-bars
+{
+  display: none;
+}
+@media (max-width:768px){
+  .checkbtn{
+      display: block;
+  }
+  i.menu-icon.fa.fa-bars
+  {
+    display: block;
+  }
+  .menu-icon{
+      display: block;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+  }
+  .nav-menu ul{
+      display: block;
+      position: fixed;
+      top:50px;
+      left:-100%;
+      background: #0bb2aa;
+      width: 100%;
+      height: 100vh;
+      right: 0;
+  }
+  .nav-menu ul li{
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+  }
+  .nav-menu ul li:last-child{
+      background: none;
+      padding: 1rem;
+  }
+  #check:checked ~ ul{
+      left: 0;
+      transition: all .25s;
+  }
+}
+/* header { 
   grid-area: header; 
 	text-align: center;
 	width: 100%;
@@ -81,7 +160,7 @@ header .overlay{
   margin-top: -100px;
   border-radius: 0 0 85% 85% / 30%;
 
-}
+} */
 @font-face {
   font-family: 'ABeeZee', sans-serif;
 }
@@ -239,15 +318,31 @@ ul{
 }
 .Evento{
   /* background:  linear-gradient(to right bottom, #a4cd88 50%, #c3deb1 50.1%); */
-  border-radius: 20px;
+  /* border-radius: 20px; */
+  background: white;
+  border-top: solid 3px;
+  border-top-color: magenta;
   padding-bottom: 20px;
   width: 400px;
   margin: 10px;
   margin-top: 10px;
+  display: flex;
+  position: relative;
 }
-
+.Butt_Events
+{
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  bottom: 5px;
+}
+.InputElementsEvents
+{
+  display: flex;
+  margin-bottom: 30px;
+}
 .Evento .content{
-  margin-left: 20px;
+  /* margin-left: 20px; */
   color: #000000;
   font-size: 12px;
 }
@@ -267,14 +362,18 @@ ul{
   margin-bottom: 10px;
 }
 /*pantalla pequeña movil*/
-/* .description-event 
+.description-event 
 {
- display: none ;
-} */
+ margin-bottom: 30px;
+} 
 .img_Event
 {
-  width: 100px;
+  width: 150px;
   float: left;
+  /* border-radius: 8px; */
+  transition: border-radius 0.23s, transform 0.23s;
+  margin: 10px;
+  z-index: -2 !important;
 }
 .Evento .content .description-event img{
   height: 100px;
@@ -283,11 +382,47 @@ ul{
 }
 .AsistenciaInput::placeholder {
   color: rgb(70, 70, 70);
+
 }
 .bInfo
 {
-  margin: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  
 }
+
+
+/* CSS */
+.bInfo{
+  background-color: #0bb2aa;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+
  p{
   color: black; 
 }
@@ -326,8 +461,9 @@ ul{
 }
 @media only screen and (max-width: 890px) {
   .Evento {
-   width: 90%;
-    
+   width: 100%;
+   margin: 0px;
+   margin-bottom: 10px;
   }
   
   
@@ -538,6 +674,8 @@ ul{
 
 .AsistenciaInput{
   border-radius: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 
@@ -547,26 +685,34 @@ input,
 .editEvent{
   border-radius: 20px;
   font-weight: 900;
+  margin-right: 10px;
+
 }
-input:hover, .delateEvent:hover, .shareEvent:hover
+
+.shareEvent
+{
+  height: 20px;
+  width: 35px;
+  justify-content: center;
+}
+/* input:hover, .delateEvent:hover, .shareEvent:hover
 {
   background: rgba(69, 65, 88, 0.2);
+} */
+
+button
+{
+  color: #000;
+  width: fit-content;
 }
 
-.img_Event {
-  border-radius: 8px;
-  transition: border-radius 0.23s, transform 0.23s;
-  margin: 10px;
-  z-index: -2 !important;
-}
-
-.img_Event:hover{
+/* .img_Event:hover{
   
   transform: scale(1.1);
   border-radius: 18px;
   z-index: -2 !important;
   
-}
+} */
 
 #ViewAllEvents
 {
@@ -594,12 +740,12 @@ input:hover, .delateEvent:hover, .shareEvent:hover
   position: fixed;
   bottom: -4px;
   right: 10px;
-  z-index: 90;
+  z-index: 3;
 }
 
 .card {
   position: fixed;
-  z-index: 90;
+  z-index: 3;
   top: 20%;
 }
 
@@ -930,11 +1076,11 @@ td, .fc-scrollgrid-sync-inner,
     
     font-size: 13px;
   }
-  .img_Event
+  /* .img_Event
   {
     height: 70px;
     width: 70px;
-  }
+  } */
 }
 
 @media screen and (max-width: 600px) {
