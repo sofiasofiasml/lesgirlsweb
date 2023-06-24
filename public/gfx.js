@@ -358,7 +358,18 @@ var GFX =
         var dias=["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"];
 
         
-        nameEvent.innerText = titleUpdate + " Fecha: "+dias[mydate.getUTCDay()]+ " "+  mydate.toLocaleDateString("es-ES") +" - "+ dias[mydateFin.getUTCDay()] +" "+ mydateFin.toLocaleDateString("es-ES")+" Hora: "+valueHour+ " Organizador: "+ valueOrganizer; 
+        nameEvent.innerText = titleUpdate + "\n📅: "+dias[mydate.getUTCDay()]+ " "+  
+        mydate.toLocaleDateString("es-ES") +" - "+ dias[mydateFin.getUTCDay()] +" "+ 
+        mydateFin.toLocaleDateString("es-ES")+" \n⌛: "+valueHour+ " Organizador: "+ 
+        valueOrganizer; 
+
+        if(mydate.toLocaleDateString("es-ES") == mydateFin.toLocaleDateString("es-ES"))
+        {
+            nameEvent.innerText = titleUpdate + " \n📅: "+dias[mydate.getUTCDay()]+ " "+  
+            mydate.toLocaleDateString("es-ES") +"\n⌛: "+valueHour+ "\nOrganizador: "+ 
+            valueOrganizer; 
+        }
+        
         
         var descriptionEvent = document.createElement("div");
         descriptionEvent.classList.add("description-event");
@@ -444,11 +455,11 @@ var GFX =
             contEvent.classList.add("ContadorAsistentes"+CORE.DicEvents[indexEvent].id);
             if(CORE.DicEvents[indexEvent].asistentes){
                 contEvent.innerText = "Asistentes: "+CORE.DicEvents[indexEvent].asistentes.length; 
-                contEvent.style.fontWeight = "200";
+                contEvent.style.fontWeight = "800";
             }
             else{
                 contEvent.innerText = "Asistentes: 0"; 
-            contEvent.style.fontWeight = "200";
+            contEvent.style.fontWeight = "800";
         }
 
         var ReadMore = document.createElement("a"); 
