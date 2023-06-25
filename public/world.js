@@ -22,7 +22,7 @@ User.prototype.toJSON = function()
 }
 //Eventos
 class News {
-    constructor(id, title, image, content, date, dateFin, hour, categoria, key, asistenteskey, organizer) {
+    constructor(id, title, image, content, date, dateFin, hour, categoria, key, asistenteskey, organizer, hourFin, ubi) {
         this.id = id, 
         this.key = key, 
         this.title = title, 
@@ -34,7 +34,9 @@ class News {
         this.categoria = categoria,
         this.asistentes = [], 
         this.asistenteskey = [],
-        this.organizer = organizer 
+        this.organizer = organizer, 
+        this.hourFin = hourFin, 
+        this.ubi = ubi 
 
     }
 }
@@ -60,7 +62,9 @@ News.prototype.fromJSON = function(json)
     this.hour = json.hour, 
     this.categoria = json.categoria, 
     this.asistentes = json.asistentes,
-    this.organizer = json.organizer
+    this.organizer = json.organizer, 
+    this.hourFin = json.hourFin, 
+    this.ubi = json.ubi 
 }
 //enviar info al servidor
 News.prototype.toJSON = function()
@@ -75,7 +79,9 @@ News.prototype.toJSON = function()
         hour: this.hour, 
         categoria: this.categoria,
         asistentes: this.asistentes,
-        organizer: this.organizer
+        organizer: this.organizer,
+        hourFin: this.hourFin,
+        ubi: this.ubi
     }
 }
 var WORLD={

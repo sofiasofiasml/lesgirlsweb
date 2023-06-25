@@ -207,7 +207,7 @@ function delateEvenDB(event){
     }        
 }
 
-function editEvenDB( title, image, content,date, dateFin, hour, categoria, organizer){
+function editEvenDB( title, image, content,date, dateFin, hour, categoria, organizer, hourFin, ubi){
     var id = CORE.idEdit;  
     
     for(var i=0; i< CORE.DicEvents.length; i++){
@@ -231,6 +231,8 @@ function editEvenDB( title, image, content,date, dateFin, hour, categoria, organ
             updates[ `categoria`] =  categoria;
             updates[ `asistentes`] =  CORE.DicEvents[i].asistentes;
             updates[ `organizer`] =  organizer;
+            updates[ `hourFin`] =  hourFin;
+            updates[ `ubi`] =  ubi;
 
 
            firebase.database().ref("Eventos/"+k).update(updates);
@@ -272,6 +274,8 @@ function gotData(data)
                 var image =  scores[k].image; 
                 var categoria =  scores[k].categoria; 
                 var content =  scores[k].content;
+                var hourFin =  scores[k].hourFin;
+                var ubi =  scores[k].ubi;
                 var organizer =  scores[k].organizer;
                 organizer = organizer.split('/')[0] +"/"+ LOGIC.encrypt_data(organizer.split('/')[1]); 
                 var asistentes  = [];  
@@ -282,7 +286,7 @@ function gotData(data)
                     asistenteskey= Object.keys(scores[k].asistentes); 
                    
                 }
-                GFX.createDivEventosDB(title, id, date,dateFin, hour, image, categoria, content, asistentes, key, asistenteskey, organizer); 
+                GFX.createDivEventosDB(title, id, date,dateFin, hour, image, categoria, content, asistentes, key, asistenteskey, organizer,hourFin,ubi); 
             }
             LOGIC.ordenarEventDate(); 
             //LOGIC.cambiarIDIfRepite(); 

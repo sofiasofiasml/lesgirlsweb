@@ -117,6 +117,8 @@ var GFX =
                 document.querySelector("#dateEditEvent").value = CORE.DicEvents[i].date; 
                 document.querySelector("#dateEventEditFinish").value = CORE.DicEvents[i].dateFin; 
                 document.querySelector("#horaEditEvent").value = CORE.DicEvents[i].hour; 
+                document.querySelector("#horaFinalEditEvent").value = CORE.DicEvents[i].hourFin; 
+                document.querySelector("#ubiEditEvent").value = CORE.DicEvents[i].ubi; 
                 document.querySelector("#categoriaEdit").value = CORE.DicEvents[i].categoria; 
                 document.querySelector("#organizerEditEvent").value = CORE.DicEvents[i].organizer.split('/')[0]; 
                 if(document.querySelector("#categoriaEdit").value=="SubirImagen")
@@ -242,6 +244,8 @@ var GFX =
         var valueDate= document.querySelector("#dateEvent");
         var valueDateFin= document.querySelector("#dateEventFinish");
         var valueHour= document.querySelector("#horaEvent");
+        var valueHourFin= document.querySelector("#horaFinalEvent");
+        var valueUbi= document.querySelector("#ubiEvent");
         var valueorganizerEvent = document.querySelector("#organizerEvent").value +"/"+ auth.currentUser.email; 
 
         var select = document.getElementById('categoria');
@@ -291,7 +295,7 @@ var GFX =
 
         if(!image || image =="")
             var image = 'img/les.webp'; 
-        var newEve = new News(id, valuenameEvent.value, image, initDescription, valueDate.value, valueDateFin.value, valueHour.value, categoria, "", [], valueorganizerEvent); 
+        var newEve = new News(id, valuenameEvent.value, image, initDescription, valueDate.value, valueDateFin.value, valueHour.value, categoria, "", [], valueorganizerEvent, valueHourFin.value, valueUbi.value); 
         CORE.DicEvents[CORE.DicEvents.length]=newEve; 
         //var newEvenCalendar = new EventCalendar(valuenameEvent.value, valueDate.value, valueDate.value, ""); 
        // CORE.calendarEvents[CORE.calendarEvents.length]=newEvenCalendar;
@@ -304,12 +308,14 @@ var GFX =
         initDescription = initDescription + finDescription; 
         return initDescription; 
     },
-    createDivEventosDB: function(title, id, date,dateFin, hour, image, categoria, content, asistentes, key, asistenteskey, organizer)
+    createDivEventosDB: function(title, id, date,dateFin, hour, image, categoria, content, asistentes, key, asistenteskey, organizer, hourFin, ubi)
     {
         if(document.title=="LesGirls"){
             var valueDate= date;
             var valueDateFin= dateFin;
             var valueHour= hour;
+            var valueHourFin= hourFin;
+            var valueUbi= ubi;
             
             var imgEvent; 
             var index = image.indexOf("/img/");
@@ -320,7 +326,7 @@ var GFX =
                 {
                     asistentes[i]= asistentes[i].split('/')[0]+'/'+LOGIC.encrypt_data(asistentes[i].split('/')[1]);
                 }
-                var newEve = new News(id, title, imgEvent, content, valueDate,valueDateFin, valueHour, categoria, asistentes, key, organizer); 
+                var newEve = new News(id, title, imgEvent, content, valueDate,valueDateFin, valueHour, categoria, asistentes, key, organizer,valueHourFin,valueUbi); 
                 if(asistentes){
                     newEve.asistentes = asistentes; 
                     newEve.asistenteskey = asistenteskey; 
@@ -351,6 +357,8 @@ var GFX =
         var valueDate= CORE.DicEvents[indexEvent].date;
         var valueDateFin= CORE.DicEvents[indexEvent].dateFin;
         var valueHour= CORE.DicEvents[indexEvent].hour;
+        var valueHourFin= CORE.DicEvents[indexEvent].hourFin;
+        var valueUbi= CORE.DicEvents[indexEvent].ubi;
         var valueOrganizer= CORE.DicEvents[indexEvent].organizer.split('/')[0];
         var titleUpdate = CORE.DicEvents[indexEvent].title.charAt(0).toUpperCase() +CORE.DicEvents[indexEvent].title.slice(1);
         var mydate = new Date(valueDate); 
@@ -360,14 +368,14 @@ var GFX =
         
         nameEvent.innerText = titleUpdate + "\n📅: "+dias[mydate.getUTCDay()]+ " "+  
         mydate.toLocaleDateString("es-ES") +" - "+ dias[mydateFin.getUTCDay()] +" "+ 
-        mydateFin.toLocaleDateString("es-ES")+" \n⌛: "+valueHour+ " Organizador: "+ 
-        valueOrganizer; 
+        mydateFin.toLocaleDateString("es-ES")+" \n⌛: "+valueHour+ "-"+valueHourFin+"\n📌: "+valueUbi+
+        "\nOrganizador: "+ valueOrganizer; 
 
         if(mydate.toLocaleDateString("es-ES") == mydateFin.toLocaleDateString("es-ES"))
         {
             nameEvent.innerText = titleUpdate + " \n📅: "+dias[mydate.getUTCDay()]+ " "+  
-            mydate.toLocaleDateString("es-ES") +"\n⌛: "+valueHour+ "\nOrganizador: "+ 
-            valueOrganizer; 
+            mydate.toLocaleDateString("es-ES") +"\n⌛: "+valueHour+ "-"+valueHourFin+"\n📌: "+valueUbi+ 
+            "\nOrganizador: "+ valueOrganizer; 
         }
         
         
