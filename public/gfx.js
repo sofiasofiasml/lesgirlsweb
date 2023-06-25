@@ -595,34 +595,34 @@ var GFX =
     },
     colorBackgroundEvent: function(category, div1Event)
     {
-        switch (category) {
-            case "1": // Senderismo
-                div1Event.setAttribute("style", "border-top-color: green;");
-              break;
-            case "2": // Girls-bcn
-                div1Event.setAttribute("style", "border-top-color: red;");
-              break;
-            case "3": // Fiesta/Bar --
-                div1Event.setAttribute("style", "border-top-color: blue;");
-              break;
-            case "4": // Cultura ---
-                div1Event.setAttribute("style", "border-top-color: yellow;");
-              break;
-            case "5": // Gastronomía ---
-                div1Event.setAttribute("style", "border-top-color: purple;");
-              break;
-            case "6": // Deporte --
-                div1Event.setAttribute("style", "border-top-color: orange;");
-              break;
-            case "7": // Cine --
-                div1Event.setAttribute("style", "border-top-color: teal;");
-                break;
-            case "8": // Juegos ---
-                div1Event.setAttribute("style", "border-top-color: violet;");
-              break;
-            default: // Subir imagen 
-                div1Event.setAttribute("style", "border-top-color: magenta;");
-          }
+        // switch (category) {
+        //     case "1": // Senderismo
+        //         div1Event.setAttribute("style", "border-top-color: #004D40;");
+        //       break;
+        //     case "2": // Girls-bcn
+        //         div1Event.setAttribute("style", "border-top-color: #26A69A;");
+        //       break;
+        //     case "3": // Fiesta/Bar --
+        //         div1Event.setAttribute("style", "border-top-color: #80CBC4;");
+        //       break;
+        //     case "4": // Cultura ---
+        //         div1Event.setAttribute("style", "border-top-color: #B2DFDB;");
+        //       break;
+        //     case "5": // Gastronomía ---
+        //         div1Event.setAttribute("style", "border-top-color: #00BFA5;");
+        //       break;
+        //     case "6": // Deporte --
+        //         div1Event.setAttribute("style", "border-top-color: #C8E6C9;");
+        //       break;
+        //     case "7": // Cine --
+        //         div1Event.setAttribute("style", "border-top-color: #66BB6A;");
+        //         break;
+        //     case "8": // Juegos ---
+        //         div1Event.setAttribute("style", "border-top-color: #C8E6C9;");
+        //       break;
+        //     default: // Subir imagen 
+        //         div1Event.setAttribute("style", "border-top-color: #00897B;");
+        //   }
           
     },
     addButtonOptionVotation: function(id, name, link, resp)
