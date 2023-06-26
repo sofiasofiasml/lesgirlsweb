@@ -79,6 +79,9 @@ header{
   padding-top: 16px;
   padding-left: 20px;
 }
+i.menu-icon.fa.fa-bars {
+  /* color: black; */
+}
 .socialL a img
 {
  width: 15px;
@@ -117,7 +120,7 @@ header{
   }
   i.menu-icon.fa.fa-bars
   {
-    display: block;
+    display: contents;
   }
   .menu-icon{
       display: block;
@@ -339,7 +342,7 @@ ul{
   /* border-radius: 20px; */
   background: white !important;
   border-top: solid 3px;
-  border-top-color: magenta;
+  border-top-color: #0bb2aa;
   padding-bottom: 20px;
   width: 400px;
   margin: 10px;
