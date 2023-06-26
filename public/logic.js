@@ -25,8 +25,6 @@ var LOGIC = {
         var valueHour= document.querySelector("#horaEvent");
         var valueImage= document.querySelector(".imagenUpload");
         var valueOrganizer= document.querySelector("#organizerEvent");
-        var valueUbi= document.querySelector("#ubiEvent");
-        var valueHourFin= document.querySelector("#horaFinalEvent");
         
         if(!auth.currentUser)
         {
@@ -34,8 +32,7 @@ var LOGIC = {
         }
         
 
-        if(valueHourFin.value!="" && valueUbi.value!="" && valueOrganizer.value!="" && valuenameEvent.value !="" && 
-        valueDate.value !="" && valueDateFin!="" && valueHour.value !="" ){
+        if(valueOrganizer.value!="" && valuenameEvent.value !="" && valueDate.value !="" && valueDateFin!="" && valueHour.value !="" ){
             // if(!valueImage)
             //     LOGIC.saveImageUpload(valueImage.value);
             
@@ -263,8 +260,6 @@ var LOGIC = {
             var date= document.querySelector("#dateEditEvent").value; 
             var dateFin= document.querySelector("#dateEventEditFinish").value; 
             var hour= document.querySelector("#horaEditEvent").value; 
-            var hourFin= document.querySelector("#horaFinalEditEvent").value; 
-            var ubi= document.querySelector("#ubiEditEvent").value; 
             var categoria= document.querySelector("#categoriaEdit").value; 
             var id = CORE.idEdit;  
             for(var i=0; i< CORE.DicEvents.length; i++){
@@ -289,7 +284,7 @@ var LOGIC = {
                     }
                 }
             }
-            editEvenDB( title, image, content,date, dateFin, hour, categoria, organizer, hourFin, ubi); 
+            editEvenDB( title, image, content,date, dateFin, hour, categoria, organizer); 
             document.location.reload();
            
        // }
