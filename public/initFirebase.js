@@ -10,13 +10,13 @@
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBWbTUhd1Jg2mN4Lnd5vOi7YF4nRTo4qHQ",
-    authDomain: "lesgirlsweb.firebaseapp.com",
-    projectId: "lesgirlsweb",
-    storageBucket: "lesgirlsweb.appspot.com",
-    messagingSenderId: "110953578081",
-    appId: "1:110953578081:web:a8604fd0ee1ab7869a3420",
-    measurementId: "G-G5EDL9QTYD"
+    apiKey: "AIzaSyAPEhc_evjuR8wKqe6r0yST6T2RTxLoIgQ",
+    authDomain: "fir-lesgirlsweb.firebaseapp.com",
+    databaseURL: "https://fir-lesgirlsweb-default-rtdb.firebaseio.com",
+    projectId: "fir-lesgirlsweb",
+    storageBucket: "fir-lesgirlsweb.appspot.com",
+    messagingSenderId: "729684433383",
+    appId: "1:729684433383:web:6b22868161449dd7000542"
   };
  
 
