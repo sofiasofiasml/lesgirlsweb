@@ -352,7 +352,8 @@ var GFX =
     },
     printEvent: function(indexEvent)
     {
-        var nameEvent = document.createElement("h4");
+        var nameEvent = document.createElement("h4");titleEvent
+        var titleEvent = document.createElement("h2");
         var valuenameEvent = document.querySelector("#nameEvent"); 
         var valueDate= CORE.DicEvents[indexEvent].date;
         var valueDateFin= CORE.DicEvents[indexEvent].dateFin;
@@ -365,15 +366,15 @@ var GFX =
         var mydateFin = new Date(valueDateFin); 
         var dias=["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"];
 
-        
-        nameEvent.innerText = titleUpdate + "\n📅: "+dias[mydate.getUTCDay()]+ " "+  
+        titleEvent.innerText = titleUpdate; 
+        nameEvent.innerText =  "📅: "+dias[mydate.getUTCDay()]+ " "+  
         mydate.toLocaleDateString("es-ES") +" - "+ dias[mydateFin.getUTCDay()] +" "+ 
         mydateFin.toLocaleDateString("es-ES")+" \n⌛: "+valueHour+ "-"+valueHourFin+"\n📌: "+valueUbi+
         "\nOrganizador: "+ valueOrganizer; 
 
         if(mydate.toLocaleDateString("es-ES") == mydateFin.toLocaleDateString("es-ES"))
         {
-            nameEvent.innerText = titleUpdate + " \n📅: "+dias[mydate.getUTCDay()]+ " "+  
+            nameEvent.innerText =  " 📅: "+dias[mydate.getUTCDay()]+ " "+  
             mydate.toLocaleDateString("es-ES") +"\n⌛: "+valueHour+ "-"+valueHourFin+"\n📌: "+valueUbi+ 
             "\nOrganizador: "+ valueOrganizer; 
         }
@@ -512,6 +513,7 @@ var GFX =
         
         div1Img.appendChild(imgEvent); 
         div1Event.appendChild(div1Img); 
+        cont1Event.appendChild(titleEvent); 
         cont1Event.appendChild(nameEvent); 
         cont1Event.appendChild(bInfo); 
         // cont1Event.appendChild(brdiv); 
