@@ -81,7 +81,7 @@ header a {
 .socialL
 {
   padding-top: 16px;
-  padding-left: 20px;
+  padding-left: 10px;
 }
 i.menu-icon.fa.fa-bars {
   /* color: black; */
@@ -89,6 +89,7 @@ i.menu-icon.fa.fa-bars {
 .socialL a img
 {
  width: 15px;
+ margin-left: 1px;
 
 }
 .logo-header img{
@@ -282,7 +283,7 @@ ul{
   cursor: pointer;
 }
 .footer-col ul li a:hover{
-  color: #ffffff;
+  color: #837f7f;
 	padding-left: 8px;
 }
 .footer-col .social-links a{
@@ -532,15 +533,15 @@ ul{
 .popup-Vot .content-Vot
 {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%,-50%) scale(0);
   background: #75c9a3;
-  width: 70%; 
+  width: 90%;
   /* height: 420px; */
   z-index: 2;
   /* text-align: center; */
-  padding: 20px; 
+  padding: 20px;
   box-sizing: border-box;
   color: rgb(255, 255, 255);
   border-radius: 20px;
@@ -605,7 +606,9 @@ ul{
   border-radius: 50%;
   cursor: pointer;
 }
-
+.content-AddEvent {
+  top: 50% !important;
+}
 .popup-AddEvent.active .overlay-AddEvent, 
 .popup-EditEvent.active .overlay-EditEvent, 
 .popup-Votacion.active .overlay-Votacion,
@@ -624,7 +627,8 @@ ul{
 {
   transition: all 300ms ease-in-out;
   transform: translate(-50%,-50%) scale(1);
-
+  z-index: 4;
+  border: 2px solid black;
 } 
 .close-btn-Asistant{
   /* position: absolute; */
@@ -803,7 +807,7 @@ button
   height: 40px;
   width: 40px;
   border-radius: 50%;
-  z-index: 1;
+  z-index: 5;
   background-color: #75c9a3;
   border: 2px solid #000000;
   display: flex;
