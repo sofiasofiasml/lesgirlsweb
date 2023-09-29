@@ -8,7 +8,6 @@
  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 //  let prueba = 'https://nominatim.openstreetmap.org/reverse?lat=41.63125237270472&lon=-4.742565007934635&format=json';
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyBWbTUhd1Jg2mN4Lnd5vOi7YF4nRTo4qHQ",
     authDomain: "lesgirlsweb.firebaseapp.com",
@@ -30,6 +29,8 @@ const firebaseConfig = {
  
  const signInWithGoogleButton = document.getElementById('signInWithGoogle');
  const signOutWithGoogleButton = document.getElementById('singout');
+ const signOutWithEmailButton = document.getElementById('Emailbuton');
+ const signFueraWithEmailButton = document.getElementById('Emailbutonout');
  
  var auth = firebase.auth(); 
 
@@ -50,6 +51,7 @@ const firebaseConfig = {
 
 
   signInWithGoogleButton.addEventListener('click', signInWithGoogle);
+
   const signup = () => {
     firebase.auth().signInWithPopup(provider);
   firebase.auth()
@@ -94,6 +96,94 @@ const firebaseConfig = {
     GFX.displayButtonRegisterGoogle(); 
  }
  signOutWithGoogleButton.addEventListener('click', googlesingOut);
+
+
+
+ function EmailAuth()
+ {
+    var email = document.getElementById("emailEmail").value; 
+    var password = document.getElementById("passEmail").value; 
+    
+//     firebase.auth().createUserWithEmailAndPassword(email, password)
+//   .then((userCredential) => {
+//     // Signed in 
+//     var user = userCredential.user;
+//     // ...
+//     alert("uer ceated sucefully");
+//   })
+//   .catch((error) => {
+//     var errorCode = error.code;
+//     var errorMessage = error.message;
+//     // ..
+//     alert(errorMessage); 
+
+//   });
+firebase.auth().signInWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    // Signed in
+    var user = userCredential.user;
+    // ...
+    alert("uer ceated sucefully");
+    
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    alert(errorMessage); 
+
+  });
+
+  
+
+ }
+ signOutWithEmailButton.addEventListener('click', EmailAuth);
+
+ function EmailAuthOut()
+ {
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+        alert("uer fueraaa");
+    
+      }).catch((error) => {
+        // An error happened.
+      });
+ }
+
+ signFueraWithEmailButton.addEventListener('click', EmailAuthOut);
+
+
+ render();
+function render(){
+	window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container');
+	recaptchaVerifier.render();
+}
+	// function for send message
+function phoneAuth(){
+	var number = document.getElementById('number').value;
+    if(number[0]!='+')
+    {
+        alert("Añadir +34 o el correspondiente"); 
+    }
+	firebase.auth().signInWithPhoneNumber(number, window.recaptchaVerifier).then(function(confirmationResult){
+		window.confirmationResult = confirmationResult;
+		coderesult = confirmationResult;
+		document.getElementById('sender').style.display = 'none';
+		document.getElementById('verifier').style.display = 'block';
+	}).catch(function(error){
+		alert(error.message);
+	});
+}
+	// function for code verify
+function codeverify(){
+	var code = document.getElementById('verificationcode').value;
+	coderesult.confirm(code).then(function(){
+		document.getElementsByClassName('p-conf')[0].style.display = 'block';
+		document.getElementsByClassName('n-conf')[0].style.display = 'none';
+	}).catch(function(){
+		document.getElementsByClassName('p-conf')[0].style.display = 'none';
+		document.getElementsByClassName('n-conf')[0].style.display = 'block';
+	})
+}
 //BD
 
 
