@@ -401,8 +401,18 @@ var LOGIC = {
         var message= String.fromCodePoint(0x1F308) +" AGENDA " + String.fromCodePoint(0x1F308) +"\n"; 
         for(var i=0; i< CORE.DicEvents.length; i++)
         {
-            message += "*"+LOGIC.spaceTitle(CORE.DicEvents[i].title) + "* " + CORE.DicEvents[i].date + " hasta " + CORE.DicEvents[i].dateFin +"\n"; 
+            const MESES = [
+                "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio",
+                "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
+              ];
+              const date = new Date(CORE.DicEvents[i].date);
+              
+               // Devuelve el mes actual en formato de texto
+
+            message += "*"+LOGIC.spaceTitle(CORE.DicEvents[i].title) + "* " + date.getDate() +" de " + MESES[date.getMonth()] + " ha las " + CORE.DicEvents[i].hour +"h\n"; 
         }
+
+        message += "\nMás información en https://lesgirls.es/ \n¡No te olvides de apuntarte!"; 
         GFX.togglePopupShareAgenda(); 
         GFX.ShowAgenda(message); 
     }, 
