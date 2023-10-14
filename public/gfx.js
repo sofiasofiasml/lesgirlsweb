@@ -38,6 +38,16 @@ var GFX =
         document.getElementById("popup-Votacion").classList.toggle("active"); 
         LOGIC.InfoVotationElement(element); 
     }, 
+    togglePopupInitGoogle: function(element)
+    {
+        document.getElementById("popup-InitGoogle").classList.toggle("active"); 
+        LOGIC.InfoVotationElement(element); 
+    }, 
+    togglePopupInitEmail: function(element)
+    {
+        document.getElementById("popup-InitEmail").classList.toggle("active"); 
+        LOGIC.InfoVotationElement(element); 
+    }, 
     togglePopupHoroscopo: function(val)
     {
         window.scrollTo(0,1);
@@ -167,14 +177,16 @@ var GFX =
                 if(CORE.DicEvents[i].id == event.name)
                 {
                     for(var j=0; j< CORE.DicEvents[i].asistentes.length; j++){
-                        if( auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[j].split('/')[1]))
-                            evalurarEmailExistente =1; 
-                        for(var k=0; k< CORE.admins.length; k++)
+                        if(auth.currentUser.email)
                         {
-                            if( LOGIC.encrypt_data(auth.currentUser.email) == CORE.admins[k])
-                                evalurarEmailExistente =0; 
+                            if( auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[j].split('/')[1]))
+                                evalurarEmailExistente =1; 
+                            for(var k=0; k< CORE.admins.length; k++)
+                            {
+                                if( LOGIC.encrypt_data(auth.currentUser.email) == CORE.admins[k])
+                                    evalurarEmailExistente =0; 
+                            }
                         }
-
                     }
                 }
 
@@ -236,7 +248,18 @@ var GFX =
         ulEvent.appendChild(liEvent); 
 
         var contAsisten = document.querySelector('.ContadorAsistentes'+event.name); 
-        contAsisten.innerText = "Asistentes: "+ CORE.DicEvents[event.name].asistentes.length; 
+        for(var i=0; i<CORE.DicEvents.length; i++)
+        {
+            if(CORE.DicEvents[i].id == event.name)
+            {
+                if(CORE.DicEvents[i].asistentes)
+                    contAsisten.innerText = "Asistentes: "+ CORE.DicEvents[i].asistentes.length; 
+                else
+                    contAsisten.innerText = "Asistentes: 0"; 
+            }
+        }
+        
+
     },
     createDivEventos: function()
     {
@@ -246,7 +269,13 @@ var GFX =
         var valueHour= document.querySelector("#horaEvent");
         var valueHourFin= document.querySelector("#horaFinalEvent");
         var valueUbi= document.querySelector("#ubiEvent");
-        var valueorganizerEvent = document.querySelector("#organizerEvent").value +"/"+ auth.currentUser.email; 
+        var valueorganizerEvent =""; 
+        if(auth.currentUser.email)
+            valueorganizerEvent = document.querySelector("#organizerEvent").value +"/"+ auth.currentUser.email; 
+        else{
+            if(auth.currentUser.uid)
+                valueorganizerEvent = document.querySelector("#organizerEvent").value +"/"+ auth.currentUser.uid; 
+        }
 
         var select = document.getElementById('categoria');
         var valueCategoria = select.options[select.selectedIndex].value;

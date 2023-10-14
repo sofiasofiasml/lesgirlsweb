@@ -206,8 +206,12 @@ function insertData(data, name){
         CORE.DicEvents[i].asistentes.push(value); 
     }
     var db = firebase.database();
-
-    db.ref("Eventos/"+k+"/"+campo).push(value +'/'+auth.currentUser.email);
+    if(auth.currentUser.email)
+        db.ref("Eventos/"+k+"/"+campo).push(value +'/'+auth.currentUser.email);
+    else{
+        if(auth.currentUser.uid)
+            db.ref("Eventos/"+k+"/"+campo).push(value +'/'+auth.currentUser.uid);
+    }
         
 }
 //Delate Event

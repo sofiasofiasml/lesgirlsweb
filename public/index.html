@@ -78,37 +78,14 @@
                 <!-- <li><a href="/quien-soy.html">Quien Soy</a></li>
                 <li><a href="">Servicios</a></li> -->
                 <li><a href = "mailto:sofia.martinez.lopez.98@gmail.com">Contacto</a></li>
+                <!-- <li><a href = "mailto:sofia.martinez.lopez.98@gmail.com">Contacto</a></li> -->
+                <!-- <li><a  onclick="GFX.togglePopupVotacion()">INICIO SESSIÓN TELÉFONO</a></li> -->
                 <div class="text-center">
-                    <button class="BGoogle" id="signInWithGoogle">Iniciar sesión 
-                    </button>
-                    <button class="BGoogle" id="singout" style="display: none;">Cerrar sesión
-                    </button>
-                    <div class="container">
-                        <label for="uname"><b>Username</b></label>
-                        <input type="text" id="emailEmail" placeholder="Enter Username" name="uname" required>
-                  
-                        <label for="psw"><b>Password</b></label>
-                        <input type="password" id="passEmail" placeholder="Enter Password" name="psw" required>
-                          
-                        <button type="submit" id="Emailbuton">Login</button>
-                        <button type="submit" id="Emailbutonout">Out</button>
-                        <label>
-                          <input type="checkbox" checked="checked" name="remember"> Remember me
-                        </label>
+                    
+                        <button  onclick="GFX.togglePopupVotacion()">INICIO SESSIÓN TELÉFONO</button>
+                        <button  onclick="GFX.togglePopupInitEmail()">INICIO SESSIÓN EMAIL</button>
+                        <button  onclick="GFX.togglePopupInitGoogle()">INICIO SESSIÓN GOOGLE</button>
 
-                        <div class="container">
-                            <div id="sender">
-                                <input type="text" id="number" placeholder="+34 650-000-000">
-                                <div id="recaptcha-container"></div>
-                                <input type="button" id="send" value="Send" onClick="phoneAuth()">
-                            </div>
-                            <div id="verifier" style="display: none">
-                                <input type="text" id="verificationcode" placeholder="OTP Code">
-                                <input type="button" id="verify" value="Verify" onClick="codeverify()">
-                                <div class="p-conf">Number Verified</div>
-                                <div class="n-conf">OTP ERROR</div>
-                            </div>
-                        </div>
                       </div>
                   
                 </div>
@@ -163,10 +140,50 @@
             <div class="overlay-Votacion"></div>
             <div class="content-Votacion">
                 <div class="close-btn" onclick="GFX.togglePopupVotacion()">&times</div>
-                <div id="InfoVotacionDB"></div>
+                <div class="container">
+                    <div id="sender">
+                        <input type="text" id="number" placeholder="+34 650-000-000">
+                        <div id="recaptcha-container"></div>
+                        <input type="button" id="send" value="Send" onClick="phoneAuth()">
+                    </div>
+                    <div id="verifier" style="display: none">
+                        <input type="text" id="verificationcode" placeholder="OTP Code">
+                        <input type="button" id="verify" value="Verify" onClick="codeverify()">
+                        <div class="p-conf">Number Verified</div>
+                        <div class="n-conf">OTP ERROR</div>
+                    </div>
+                </div>
+              
+        </div>
+        <div class="popup-InitGoogle" id="popup-InitGoogle">
+            <div class="overlay-InitGoogle"></div>
+            <div class="content-InitGoogle">
+                <div class="close-btn" onclick="GFX.togglePopupInitGoogle()">&times</div>
+                
+                <button class="BGoogle" id="signInWithGoogle">Iniciar sesión GOOGLE
+                </button>
+                <button class="BGoogle" id="singout" style="display: none;">Cerrar sesión
+                </button>
+                
+        </div>
+        <div class="popup-InitEmail" id="popup-InitEmail">
+            <div class="overlay-InitEmail"></div>
+            <div class="content-InitEmail">
+                <div class="close-btn" onclick="GFX.togglePopupInitEmail()">&times</div>
+                
+               
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" id="emailEmail" placeholder="Enter Username" name="uname" required>
+              
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" id="passEmail" placeholder="Enter Password" name="psw" required>
+                      
+                    <button type="submit" id="Emailbuton">Login</button>
+                    <button type="submit" id="Emailbutonout">Out</button>
+                    
             </div>
         </div>
-
         <div class="popup-shareAgenda" id="popup-shareAgenda">
             <div class="overlay-shareAgenda"></div>
             <div class="content-shareAgenda">

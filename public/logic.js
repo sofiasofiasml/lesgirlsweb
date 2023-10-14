@@ -157,15 +157,31 @@ var LOGIC = {
                    var entra =0; 
                     for(let j=0; j<CORE.admins.length; j++)
                    {
-                        
-                       if(auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[AsistentPos].split('/')[1]) ||
+                        if(auth.currentUser.email)
+                        {
+                            if(auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[AsistentPos].split('/')[1]) ||
                             LOGIC.encrypt_data(auth.currentUser.email) == CORE.admins[j])
-                       {
-                           delateasistentEvenDB(event);
-                           entra = 1;  
-                           document.location.reload();
-                           
-                       }
+                            {
+                                delateasistentEvenDB(event);
+                                entra = 1;  
+                                document.location.reload();
+                                
+                            }
+                        }
+                        else
+                        {
+                            if(auth.currentUser.uid)
+                            {
+                                if(auth.currentUser.uid == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[AsistentPos].split('/')[1]))
+                                {
+                                    delateasistentEvenDB(event);
+                                    entra = 1;  
+                                    document.location.reload();
+                                    
+                                }
+                            }
+                        }
+                       
                     //    else
                     //    {
                         //    }
@@ -191,11 +207,14 @@ var LOGIC = {
             
             for (var i =0; i<  CORE.admins.length; i++)
             {
-                if (person!=null && (person == LOGIC.decrypt_data(CORE.paswordEliminar) ||
-                auth.currentUser.email == LOGIC.decrypt_data(CORE.admins[i])))
+                if(auth.currentUser.email)
                 {
-                    delateEvenDB(event); 
-                    document.location.reload();
+                    if (person!=null && (person == LOGIC.decrypt_data(CORE.paswordEliminar) ||
+                    auth.currentUser.email == LOGIC.decrypt_data(CORE.admins[i])))
+                    {
+                        delateEvenDB(event); 
+                        document.location.reload();
+                    }
                 }
             }
 
@@ -217,12 +236,15 @@ var LOGIC = {
             {
                 if(event.name == CORE.DicEvents[j].id)
                 {
-                    if( auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[j].organizer.split('/')[1]))
+                    if(auth.currentUser.email)
                     {
-                        GFX.toggleEditPopup(event);
-                        IsOrganizer =1; 
-                        break; 
-
+                        if( auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[j].organizer.split('/')[1]))
+                        {
+                            GFX.toggleEditPopup(event);
+                            IsOrganizer =1; 
+                            break; 
+    
+                        }
                     }
                 }
 
@@ -233,13 +255,15 @@ var LOGIC = {
                 if(person !=null){
                     for (var i =0; i<  CORE.admins.length; i++)
                     {
-                        
-                        if (person == LOGIC.decrypt_data(CORE.paswordEliminar) ||
-                        auth.currentUser.email == LOGIC.decrypt_data(CORE.admins[i]))
+                        if(auth.currentUser.email)
                         {
-                            GFX.toggleEditPopup(event);
-                            notPas =1; 
-                            break; 
+                            if (person == LOGIC.decrypt_data(CORE.paswordEliminar) ||
+                            auth.currentUser.email == LOGIC.decrypt_data(CORE.admins[i]))
+                            {
+                                GFX.toggleEditPopup(event);
+                                notPas =1; 
+                                break; 
+                            }
                         }
                     }
                     if(notPas ==0)
