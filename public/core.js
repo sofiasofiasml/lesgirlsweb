@@ -60,6 +60,7 @@ var CORE =
             CORE.createEditor( 'NewEventDescription' );
             CORE.createEditor( 'NewEventEditDescription' );
         }
+         
  
     }, 
     ReadJson: function(fichero)

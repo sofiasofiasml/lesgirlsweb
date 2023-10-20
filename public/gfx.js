@@ -41,12 +41,223 @@ var GFX =
     togglePopupInitGoogle: function(element)
     {
         document.getElementById("popup-InitGoogle").classList.toggle("active"); 
-        LOGIC.InfoVotationElement(element); 
+        // LOGIC.InfoVotationElement(element); 
     }, 
     togglePopupInitEmail: function(element)
     {
         document.getElementById("popup-InitEmail").classList.toggle("active"); 
-        LOGIC.InfoVotationElement(element); 
+        // LOGIC.InfoVotationElement(element); 
+    }, 
+    togglePopupEventInfo: function(element)
+    {
+        document.getElementById("popup-Event-info").classList.toggle("active"); 
+        var divOverlay = document.querySelector(".Popup_EventInfo"); 
+        var inputdiv = document.createElement("div");
+        // CORE.contvoationactual +=1; 
+
+        inputdiv.innerText = "Input";
+        var url = window.location.href;
+        var indexBar = url.indexOf("#Evento"); 
+        indexBar = indexBar+7;
+        var idvalor = url.substring(indexBar);
+        var indexEvent =0; 
+        for(var i=0; i<CORE.DicEvents.length; i++)
+        {
+            if(idvalor == CORE.DicEvents[i].id)
+            {
+                indexEvent= i; 
+            }
+        }
+
+        var nameEvent = document.createElement("h4");
+        var titleEvent = document.createElement("h2");
+        var valuenameEvent = document.querySelector("#nameEvent"); 
+        var valueDate= CORE.DicEvents[indexEvent].date;
+        var valueDateFin= CORE.DicEvents[indexEvent].dateFin;
+        var valueHour= CORE.DicEvents[indexEvent].hour;
+        var valueHourFin= CORE.DicEvents[indexEvent].hourFin;
+        var valueUbi= CORE.DicEvents[indexEvent].ubi;
+        var valueOrganizer= CORE.DicEvents[indexEvent].organizer.split('/')[0];
+        var titleUpdate = CORE.DicEvents[indexEvent].title.charAt(0).toUpperCase() +CORE.DicEvents[indexEvent].title.slice(1);
+        var mydate = new Date(valueDate); 
+        var mydateFin = new Date(valueDateFin); 
+        var dias=["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"];
+
+        titleEvent.innerText = titleUpdate; 
+        nameEvent.innerText =  "📅: "+dias[mydate.getUTCDay()]+ " "+  
+        mydate.toLocaleDateString("es-ES") +" - "+ dias[mydateFin.getUTCDay()] +" "+ 
+        mydateFin.toLocaleDateString("es-ES")+" \n⌛: "+valueHour+ "-"+valueHourFin+"\n📌: "+valueUbi+
+        "\nOrganizador: "+ valueOrganizer; 
+
+        if(mydate.toLocaleDateString("es-ES") == mydateFin.toLocaleDateString("es-ES"))
+        {
+            nameEvent.innerText =  " 📅: "+dias[mydate.getUTCDay()]+ " "+  
+            mydate.toLocaleDateString("es-ES") +"\n⌛: "+valueHour+ "-"+valueHourFin+"\n📌: "+valueUbi+ 
+            "\nOrganizador: "+ valueOrganizer; 
+        }
+        
+        
+        var descriptionEvent = document.createElement("div");
+        descriptionEvent.classList.add("description-event");
+        descriptionEvent.innerHTML =  CORE.DicEvents[indexEvent].content; 
+        descriptionEvent.style.fontWeight = "200";
+        descriptionEvent.style.display = "none";
+        //Poner LINK en los links
+        if(descriptionEvent.querySelectorAll("a"))
+        {
+            for(var i=0; i<descriptionEvent.querySelectorAll("a").length; i++){
+                if(descriptionEvent.querySelectorAll("a")[i].text!="LINK")
+                    descriptionEvent.querySelectorAll("a")[i].text="LINK"; 
+            }
+            
+        }
+        
+        
+        var imgEvent = document.createElement("img");
+        var index = CORE.DicEvents[indexEvent].image.indexOf("/img/");
+        imgEvent.src = CORE.DicEvents[indexEvent].image.substring(index, CORE.DicEvents[indexEvent].image.length);
+        imgEvent.alt = "img_event"; 
+        imgEvent.title = "img_event"; 
+        imgEvent.setAttribute("class", "img_Event");
+        imgEvent.setAttribute("onclick", "GFX.imageOpen(this)");
+        
+        
+        var AsistenciaEvent = document.createElement("input"); 
+        var AsisDescEvent = document.createElement("label"); 
+        AsisDescEvent.innerText= "\n"; 
+        AsisDescEvent.style.fontWeight = "200";
+        
+        AsistenciaEvent.id="Asistencia"+CORE.DicEvents[indexEvent].id; 
+        AsistenciaEvent.setAttribute("class", "AsistenciaInput");
+        AsistenciaEvent.setAttribute("placeholder", "Nombre");
+
+        
+        var brdiv = document.createElement("br"); 
+        var divINPUT = document.createElement("div"); 
+        divINPUT.setAttribute("class", "InputElementsEvents");
+
+        var bSubmit = document.createElement("button"); 
+        bSubmit.setAttribute("type", "button");
+        bSubmit.setAttribute("class", "delateEvent fa fa-plus");
+        bSubmit.setAttribute("name", CORE.DicEvents[indexEvent].id);
+        // bSubmit.value = "+"; 
+        // bSubmit.style.fontWeight = "800";
+        bSubmit.setAttribute("onclick", "GFX.addAsistent(this)");
+
+        var bInfo = document.createElement("input"); 
+        bInfo.setAttribute("type", "submit");
+        bInfo.setAttribute("class", "bInfo");
+        bInfo.setAttribute("name", CORE.DicEvents[indexEvent].id);
+        bInfo.value = "Más información"; 
+        bInfo.style.fontWeight = "800";
+        bInfo.setAttribute("onclick", "GFX.seeInfo(this)");
+
+        var ulEvent = document.createElement("ul");
+        ulEvent.setAttribute("id", "ul"+CORE.DicEvents[indexEvent].id);
+        ulEvent.style.display = "none";
+        if(CORE.DicEvents[indexEvent].asistentes){
+            for (var i = 0; i<CORE.DicEvents[indexEvent].asistentes.length; i++){
+                var liEvent = document.createElement("li"); 
+                    liEvent.innerText = CORE.DicEvents[indexEvent].asistentes[i].split('/')[0].charAt(0).toUpperCase() + CORE.DicEvents[indexEvent].asistentes[i].split('/')[0].slice(1); 
+                    liEvent.style.fontWeight = "800";
+                    liEvent.setAttribute("class", "li"+CORE.DicEvents[indexEvent].id+"-"+i);
+
+                var delateli = document.createElement("div");
+                    delateli.innerText= "X";
+                    delateli.setAttribute("class", "close-btn-Asistant");
+                    delateli.setAttribute("id", CORE.DicEvents[indexEvent].id+"-"+i);
+                    delateli.setAttribute("onclick", "LOGIC.delateAsistant(this)");
+                    
+                    var tooltipli = document.createElement("div");
+                    tooltipli.innerText= "Borrar asistente";
+                    tooltipli.setAttribute("class", "tooltiptext");
+                    
+                    delateli.appendChild(tooltipli); 
+                    liEvent.appendChild(delateli); 
+                    ulEvent.appendChild(liEvent); 
+                }
+            }
+            var contEvent = document.createElement("div"); 
+            contEvent.classList.add("ContadorAsistentes"+CORE.DicEvents[indexEvent].id);
+            if(CORE.DicEvents[indexEvent].asistentes){
+                contEvent.innerText = "Asistentes: "+CORE.DicEvents[indexEvent].asistentes.length; 
+                contEvent.style.fontWeight = "800";
+            }
+            else{
+                contEvent.innerText = "Asistentes: 0"; 
+            contEvent.style.fontWeight = "800";
+        }
+
+        var ReadMore = document.createElement("a"); 
+        ReadMore.innerText = "Leer más"; 
+        ReadMore.setAttribute("id", "ReadMoreDescripction"+CORE.DicEvents[indexEvent].id);
+        ReadMore.setAttribute("class", "ReadMoreDescripction");
+        ReadMore.setAttribute("onclick", "LOGIC.seeReadMore(this)");
+
+        var delatebutton = document.createElement("button"); 
+        delatebutton.setAttribute("type", "button");
+        // delatebutton.innerText = "Eliminar Evento"; 
+        delatebutton.setAttribute("class", "shareEvent fa fa-trash-o");
+        delatebutton.setAttribute("name", CORE.DicEvents[indexEvent].id);
+        delatebutton.setAttribute("onclick", "LOGIC.delateEvent(this)");
+
+        var sharebutton = document.createElement("button"); 
+        sharebutton.setAttribute("type", "button");
+        // sharebutton.innerText = "Share Evento"; 
+        sharebutton.setAttribute("class", "shareEvent fa fa-share-alt");
+        sharebutton.setAttribute("name", CORE.DicEvents[indexEvent].id);
+        sharebutton.setAttribute("onclick", "LOGIC.sshareEvent(this)");
+
+        var editbutton = document.createElement("button"); 
+        editbutton.setAttribute("type", "button");
+        // editbutton.innerText = "Edit Evento"; 
+        editbutton.setAttribute("class", "shareEvent fa fa-pencil-square-o");
+        editbutton.setAttribute("name", CORE.DicEvents[indexEvent].id);
+        editbutton.setAttribute("onclick", "LOGIC.EditEventPass(this)");
+        
+        var cont1Event = document.createElement("div"); 
+        cont1Event.classList.add("content"); 
+        
+        var div1Event = document.createElement("div"); 
+        var div1Img = document.createElement("div"); 
+        var divButtoms = document.createElement("div"); 
+        divButtoms.setAttribute("class", "Butt_Events");
+
+        div1Event.classList.add("Evento"); 
+        div1Event.setAttribute("id", "Evento"+CORE.DicEvents[indexEvent].id);
+        
+        this.colorBackgroundEvent( CORE.DicEvents[indexEvent].categoria, div1Event); 
+        
+        div1Img.appendChild(imgEvent); 
+        div1Event.appendChild(div1Img); 
+        cont1Event.appendChild(titleEvent); 
+        cont1Event.appendChild(nameEvent); 
+        cont1Event.appendChild(bInfo); 
+        // cont1Event.appendChild(brdiv); 
+        cont1Event.appendChild(AsisDescEvent); 
+        divINPUT.appendChild(AsistenciaEvent); 
+        divINPUT.appendChild(bSubmit); 
+        cont1Event.appendChild(divINPUT); 
+        cont1Event.appendChild(ulEvent); 
+        cont1Event.appendChild(descriptionEvent); 
+        divButtoms.appendChild(delatebutton); 
+        divButtoms.appendChild(sharebutton); 
+        divButtoms.appendChild(editbutton); 
+        divButtoms.appendChild(contEvent); 
+        cont1Event.appendChild(divButtoms); 
+        divOverlay.appendChild(div1Event); 
+        div1Event.appendChild(cont1Event); 
+        divOverlay.appendChild(div1Event); 
+        // divOverlay.addEvents.appendChild(div1Event); 
+
+
+
+
+
+
+
+        // divOverlay.appendChild(inputdiv); 
+        // LOGIC.InfoVotationElement(element); 
     }, 
     togglePopupHoroscopo: function(val)
     {

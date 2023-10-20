@@ -70,7 +70,11 @@ header{
   /* padding: .5rem 2rem; */
   padding: 2.5rem 3rem;
   z-index: 4 !important;
+  position: fixed;
+  width: 100%;
 }
+
+
 header a {
   text-decoration: none;
 }
@@ -84,14 +88,12 @@ header a {
   padding-top: 16px;
   padding-left: 10px;
 }
-i.menu-icon.fa.fa-bars {
+i.menu-icon.fa.fa-user {
   /* color: black; */
 }
-.socialL a img
-{
- width: 15px;
- margin-left: 1px;
-
+.socialL a img {
+  width: 20px;
+  margin-left: 20px;
 }
 .logo-header img{
   width: 50px;
@@ -116,7 +118,7 @@ i.menu-icon.fa.fa-bars {
   height: 30px;
   border-radius: 2px;
 }
-.menu-icon, #check , i.menu-icon.fa.fa-bars
+.menu-icon, #check , i.menu-icon.fa.fa-user
 {
   display: none;
 }
@@ -124,7 +126,7 @@ i.menu-icon.fa.fa-bars {
   .checkbtn{
       display: block;
   }
-  i.menu-icon.fa.fa-bars
+  i.menu-icon.fa.fa-user
   {
     display: contents;
   }
@@ -161,6 +163,16 @@ i.menu-icon.fa.fa-bars {
       transition: all .25s;
   }
 }
+.b-header
+{
+  color: white;
+  border-radius: 20px;
+  border-color: white;
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+.b-header:hover
+{background: #a4a4a494;}
 /* header { 
   grid-area: header; 
 	text-align: center;
@@ -259,6 +271,7 @@ main {
 	color: #000000;
   margin-left: 10px;
   margin-right: 10px;
+  margin-top: 100px;
 }
 
 footer { grid-area: footer; } 
@@ -546,6 +559,7 @@ ul{
 .popup-Votacion .overlay-Votacion,
 .popup-InitGoogle .overlay-InitGoogle,
 .popup-InitEmail .overlay-InitEmail,
+.popup-Event-info .overlay-Event-info,
 .popup-Horoscopo .overlay-Horoscopo, 
 .popup-shareAgenda .overlay-shareAgenda,
 .popup-Vot .overlay-Vot
@@ -564,6 +578,7 @@ ul{
 .popup-Votacion .content-Votacion,
 .popup-InitGoogle .content-InitGoogle,
 .popup-InitEmail .content-InitEmail,
+.popup-Event-info .content-Event-info,
 .popup-Horoscopo .content-Horoscopo, 
 .popup-shareAgenda .content-shareAgenda,
 .popup-Vot .content-Vot
@@ -626,6 +641,7 @@ ul{
 .popup-Votacion .close-btn,
 .popup-InitGoogle .close-btn,
 .popup-InitEmail .close-btn,
+.popup-Event-info .close-btn,
 .popup-shareAgenda .close-btn,
 .popup-Vot .close-btn,
 .popup-Horoscopo .close-btn
@@ -643,7 +659,10 @@ ul{
   text-align: center;
   border-radius: 50%;
   cursor: pointer;
+  z-index: 1;
 }
+
+
 .content-AddEvent {
   top: 50% !important;
 }
@@ -652,6 +671,7 @@ ul{
 .popup-Votacion.active .overlay-Votacion,
 .popup-InitGoogle.active .overlay-InitGoogle,
 .popup-InitEmail.active .overlay-InitEmail,
+.popup-Event-info.active .overlay-Event-info,
 .popup-shareAgenda.active .overlay-shareAgenda,
 .popup-Vot.active .overlay-Vot,
 .popup-Horoscopo.active .overlay-Horoscopo
@@ -663,6 +683,7 @@ ul{
 .popup-Votacion.active .content-Votacion, 
 .popup-InitGoogle.active .content-InitGoogle, 
 .popup-InitEmail.active .content-InitEmail, 
+.popup-Event-info.active .content-Event-info, 
 .popup-shareAgenda.active .content-shareAgenda, 
 .popup-Vot.active .content-Vot,
 .popup-Horoscopo.active .content-Horoscopo

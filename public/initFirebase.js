@@ -385,6 +385,16 @@ function gotData(data)
             LOGIC.ordenarEventDate(); 
             //LOGIC.cambiarIDIfRepite(); 
             CORE.initDB = false; 
+            // Obtén la URL actual
+         var url = window.location.href;
+
+         // Verifica si la palabra "popup" está en la URL
+         if (url.indexOf("#Evento") !== -1) {
+             // Abre el popup
+             //var popup = window.open("https://tu-url-del-popup.com", "MiPopup", "width=400, height=400");
+         
+         GFX.togglePopupEventInfo();
+        }
         }
        
     }

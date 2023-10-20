@@ -51,10 +51,13 @@
         </div>
         
     </header> -->
+    
+
+
     <header class="header">
         <div class="logo-header">
-            <a href=""><img src="img/les.webp" alt=""></a>
-            <div id="titleLes"><a href="index.html">LesGirls</a></div>
+            <a href="index.html"><img src="img/les.webp" alt=""></a>
+            <!-- <div id="titleLes"><a href="index.html">LesGirls</a></div> -->
             <div class="socialL">
                 <a href="https://linktr.ee/lesgirls"><img src="img/whatsapp-brands.png" alt="whatsapp" ></a>
                 &nbsp;&nbsp;&nbsp;
@@ -69,22 +72,22 @@
             <input type="checkbox" id="check">    
             <label for="check" class="checkbtn">
                 <div id="Backlo">
-                    <i class="menu-icon fa fa-bars"></i>
+                    <i class="menu-icon fa fa-user"></i>
 
                 </div>
             </label>
             <ul>
-                <li><a href="">Inicio</a></li>
+                <!-- <li><a href="">Inicio</a></li> -->
                 <!-- <li><a href="/quien-soy.html">Quien Soy</a></li>
                 <li><a href="">Servicios</a></li> -->
-                <li><a href = "mailto:sofia.martinez.lopez.98@gmail.com">Contacto</a></li>
+                <!-- <li><a href = "mailto:sofia.martinez.lopez.98@gmail.com">Contacto</a></li> -->
                 <!-- <li><a href = "mailto:sofia.martinez.lopez.98@gmail.com">Contacto</a></li> -->
                 <!-- <li><a  onclick="GFX.togglePopupVotacion()">INICIO SESSIÓN TELÉFONO</a></li> -->
                 <div class="text-center">
                     
-                        <button  onclick="GFX.togglePopupVotacion()">INICIO SESSIÓN TELÉFONO</button>
-                        <button  onclick="GFX.togglePopupInitEmail()">INICIO SESSIÓN EMAIL</button>
-                        <button  onclick="GFX.togglePopupInitGoogle()">INICIO SESSIÓN GOOGLE</button>
+                        <button class="b-header" onclick="GFX.togglePopupVotacion()">INICIA SESIÓN TELÉFONO</button>
+                        <button  class="b-header"  onclick="GFX.togglePopupInitEmail()">INICIA SESIÓN EMAIL</button>
+                        <button  class="b-header" onclick="GFX.togglePopupInitGoogle()">INICIA SESIÓN GOOGLE</button>
 
                       </div>
                   
@@ -184,6 +187,24 @@
                     
             </div>
         </div>
+        <div class="popup-Event-info" id="popup-Event-info">
+            <div class="overlay-Event-info"></div>
+            <div class="content-Event-info">
+                <div class="close-btn" onclick="GFX.togglePopupEventInfo()">&times</div>
+                
+               
+                <div class="container">
+                    <div class="Popup_EventInfo">
+
+                    </div>
+                </div>
+                    
+                    
+            </div>
+        </div>
+
+        
+
         <div class="popup-shareAgenda" id="popup-shareAgenda">
             <div class="overlay-shareAgenda"></div>
             <div class="content-shareAgenda">
