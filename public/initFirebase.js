@@ -123,7 +123,7 @@ firebase.auth().signInWithEmailAndPassword(email, password)
     // Signed in
     var user = userCredential.user;
     // ...
-    alert("uer ceated sucefully");
+    alert("USUARIO CREADO CORRECTAMENTE");
     
   })
   .catch((error) => {
@@ -142,7 +142,7 @@ firebase.auth().signInWithEmailAndPassword(email, password)
  {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
-        alert("uer fueraaa");
+        alert("CERRAR SESIÓN");
     
       }).catch((error) => {
         // An error happened.

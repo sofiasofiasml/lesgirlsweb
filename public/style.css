@@ -68,7 +68,7 @@ header{
   justify-content: space-between;
   align-items: center;
   /* padding: .5rem 2rem; */
-  padding: 2.5rem 3rem;
+  padding: 0.5rem 1rem;
   z-index: 4 !important;
   position: fixed;
   width: 100%;
@@ -85,13 +85,13 @@ header a {
 }
 .socialL
 {
-  padding-top: 16px;
-  padding-left: 10px;
+  /* padding-top: 16px;
+  padding-left: 10px; */
 }
-i.menu-icon.fa.fa-user {
+i.menu-icon.fa.fa-bars {
   /* color: black; */
 }
-.socialL a img {
+.text-center a img {
   width: 20px;
   margin-left: 20px;
 }
@@ -118,7 +118,7 @@ i.menu-icon.fa.fa-user {
   height: 30px;
   border-radius: 2px;
 }
-.menu-icon, #check , i.menu-icon.fa.fa-user
+.menu-icon, #check , i.menu-icon.fa.fa-bars
 {
   display: none;
 }
@@ -126,7 +126,7 @@ i.menu-icon.fa.fa-user {
   .checkbtn{
       display: block;
   }
-  i.menu-icon.fa.fa-user
+  i.menu-icon.fa.fa-bars
   {
     display: contents;
   }
@@ -170,6 +170,20 @@ i.menu-icon.fa.fa-user {
   border-color: white;
   margin-bottom: 10px;
   margin-right: 5px;
+  
+}
+a.b-header
+{
+  text-decoration: none;
+  /* color: #006; */
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  padding: 9px;
+  cursor: pointer;
+}
+.content-InitSesion {
+  z-index: 100;
 }
 .b-header:hover
 {background: #a4a4a494;}
@@ -271,7 +285,7 @@ main {
 	color: #000000;
   margin-left: 10px;
   margin-right: 10px;
-  margin-top: 100px;
+  margin-top: 60px;
 }
 
 footer { grid-area: footer; } 
@@ -417,6 +431,12 @@ ul{
   color: #000000;
   font-size: 12px;
 }
+.Popup_EventInfo .Evento .content{
+  /* margin-left: 20px; */
+  color: #000000;
+  font-size: 12px;
+  width: 50%;
+}
 .Evento ul{
   display: flex;
   flex-direction: column; 
@@ -474,14 +494,14 @@ ul{
   color: #000000;
   cursor: pointer;
   display: inline-block;
-  font-size: 14px;
+  font-size: 90%;
   font-weight: 500;
   height: 40px;
   line-height: 20px;
   list-style: none;
   margin: 0;
   outline: none;
-  padding: 10px 16px;
+  /* padding: 10px 16px; */
   position: relative;
   text-align: center;
   text-decoration: none;
@@ -507,8 +527,8 @@ ul{
   border-radius: 10px;
   background-color: #fffaf0;
   color: black;
-  width: 105px;
-  height: 32px;
+  /* width: 105px;
+  height: 32px; */
   margin: 20px auto;
   margin: auto;
 
@@ -558,6 +578,7 @@ ul{
 .popup-EditEvent .overlay-EditEvent,
 .popup-Votacion .overlay-Votacion,
 .popup-InitGoogle .overlay-InitGoogle,
+.popup-InitSesion .overlay-InitSesion,
 .popup-InitEmail .overlay-InitEmail,
 .popup-Event-info .overlay-Event-info,
 .popup-Horoscopo .overlay-Horoscopo, 
@@ -577,6 +598,7 @@ ul{
 .popup-EditEvent  .content-EditEvent,
 .popup-Votacion .content-Votacion,
 .popup-InitGoogle .content-InitGoogle,
+.popup-InitSesion .content-InitSesion,
 .popup-InitEmail .content-InitEmail,
 .popup-Event-info .content-Event-info,
 .popup-Horoscopo .content-Horoscopo, 
@@ -640,6 +662,7 @@ ul{
 .popup-EditEvent .close-btn,
 .popup-Votacion .close-btn,
 .popup-InitGoogle .close-btn,
+.popup-InitSesion .close-btn,
 .popup-InitEmail .close-btn,
 .popup-Event-info .close-btn,
 .popup-shareAgenda .close-btn,
@@ -670,6 +693,7 @@ ul{
 .popup-EditEvent.active .overlay-EditEvent, 
 .popup-Votacion.active .overlay-Votacion,
 .popup-InitGoogle.active .overlay-InitGoogle,
+.popup-InitSesion.active .overlay-InitSesion,
 .popup-InitEmail.active .overlay-InitEmail,
 .popup-Event-info.active .overlay-Event-info,
 .popup-shareAgenda.active .overlay-shareAgenda,
@@ -682,6 +706,7 @@ ul{
 .popup-EditEvent.active .content-EditEvent,
 .popup-Votacion.active .content-Votacion, 
 .popup-InitGoogle.active .content-InitGoogle, 
+.popup-InitSesion.active .content-InitSesion, 
 .popup-InitEmail.active .content-InitEmail, 
 .popup-Event-info.active .content-Event-info, 
 .popup-shareAgenda.active .content-shareAgenda, 
@@ -693,6 +718,18 @@ ul{
   z-index: 4;
   border: 2px solid black;
 } 
+.popup-InitSesion.active .content-InitSesion
+{
+  z-index: 5 !important;
+}
+.popup-InitEmail.active .content-InitEmail, 
+.popup-InitGoogle.active .content-InitGoogle, 
+.popup-Votacion.active .content-Votacion
+{
+  z-index: 6 !important;
+
+}
+
 .close-btn-Asistant{
   /* position: absolute; */
   float: left;
@@ -766,6 +803,7 @@ ul{
   border-radius: 20px;
   margin-left: 0px;
   margin-right: 0px;
+  width: 80%;
 }
 
 
@@ -1295,6 +1333,15 @@ td, .fc-scrollgrid-sync-inner,
   }
   .contenedor-imagenes .imagen{
       width: 48%;
+  }
+  .b-header
+  {
+    display: block;
+  }
+  .b-header2
+  {
+    margin-right: 20px;
+    /* margin-top: 10px; */
   }
 }
 

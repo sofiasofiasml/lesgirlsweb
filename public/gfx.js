@@ -38,6 +38,11 @@ var GFX =
         document.getElementById("popup-Votacion").classList.toggle("active"); 
         LOGIC.InfoVotationElement(element); 
     }, 
+    togglePopupInitSesion: function(element)
+    {
+        document.getElementById("popup-InitSesion").classList.toggle("active"); 
+        // LOGIC.InfoVotationElement(element); 
+    }, 
     togglePopupInitGoogle: function(element)
     {
         document.getElementById("popup-InitGoogle").classList.toggle("active"); 
@@ -51,6 +56,11 @@ var GFX =
     togglePopupEventInfo: function(element)
     {
         document.getElementById("popup-Event-info").classList.toggle("active"); 
+        if(document.getElementById("popup-Event-info").classList[1]!="active")
+        {
+            var indexBar = window.location.href.indexOf("#Evento"); 
+            window.location.href = window.location.href.substring(0,indexBar);
+        }
         var divOverlay = document.querySelector(".Popup_EventInfo"); 
         var inputdiv = document.createElement("div");
         // CORE.contvoationactual +=1; 
@@ -378,8 +388,12 @@ var GFX =
     {
         if(!auth.currentUser)
         {
-            alert("Inicia Sesión"); 
-            firebase.auth().signInWithPopup(provider);
+            // alert("Inicia Sesión"); 
+            // firebase.auth().signInWithPopup(provider);
+            GFX.togglePopupInitSesion()
+            // alert("INICIA SESIONNNN"); 
+
+            
         }
         else
         {
@@ -412,7 +426,9 @@ var GFX =
                     // document.querySelector('#Asistencia'+event.name).value = ""; 
                     var el = document.querySelector('#Evento'+event.name);
                     el.remove(); // Removes the div with the 'div-02' id
-                    document.location.reload();
+                    // document.location.reload();
+                    var indexBar = window.location.href.indexOf("#Evento");
+                    window.location.href = window.location.href.substring(0,indexBar);
                 }
                 else
                     alert("Introduce nombre"); 
