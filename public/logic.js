@@ -199,7 +199,8 @@ var LOGIC = {
         if(!auth.currentUser)
         {
             alert("Inicia Sesión"); 
-            firebase.auth().signInWithPopup(provider);
+            // firebase.auth().signInWithPopup(provider);
+            GFX.togglePopupInitSesion(); 
         }
         if(auth.currentUser)
         {
@@ -226,7 +227,8 @@ var LOGIC = {
         if(!auth.currentUser)
         {
             alert("Inicia Sesión"); 
-            firebase.auth().signInWithPopup(provider);
+            //firebase.auth().signInWithPopup(provider);
+            GFX.togglePopupInitSesion(); 
         }
         if(auth.currentUser)
         {

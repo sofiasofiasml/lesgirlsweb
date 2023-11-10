@@ -177,10 +177,11 @@ a.b-header
   text-decoration: none;
   /* color: #006; */
   border-style: solid;
-  border-color: black;
+  border-color: white;
   border-width: 2px;
   padding: 9px;
   cursor: pointer;
+  font-size: 70%;
 }
 .content-InitSesion {
   z-index: 100;
