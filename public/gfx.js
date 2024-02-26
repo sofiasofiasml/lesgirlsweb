@@ -36,6 +36,7 @@ var GFX =
     togglePopupVotacion: function(element)
     {
         document.getElementById("popup-Votacion").classList.toggle("active"); 
+        window.scrollTo(0, 0);
         LOGIC.InfoVotationElement(element); 
     }, 
     togglePopupInitSesion: function(element)
@@ -46,11 +47,13 @@ var GFX =
     togglePopupInitGoogle: function(element)
     {
         document.getElementById("popup-InitGoogle").classList.toggle("active"); 
+        window.scrollTo(0, 0);
         // LOGIC.InfoVotationElement(element); 
     }, 
     togglePopupInitEmail: function(element)
     {
         document.getElementById("popup-InitEmail").classList.toggle("active"); 
+        window.scrollTo(0, 0);
         // LOGIC.InfoVotationElement(element); 
     }, 
     togglePopupEventInfo: function(element)

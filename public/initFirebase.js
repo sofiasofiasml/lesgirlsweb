@@ -380,7 +380,26 @@ function gotData(data)
                     asistenteskey= Object.keys(scores[k].asistentes); 
                    
                 }
-                GFX.createDivEventosDB(title, id, date,dateFin, hour, image, categoria, content, asistentes, key, asistenteskey, organizer,hourFin,ubi); 
+                if(CORE.arrayID[id] && CORE.idDuplicate==-1)
+                {
+                    //CAMBIAR ID del evento 
+                    let id_temp= 0; 
+                    for(let ij =1; ij<(Math.max(...Object.values(CORE.arrayID))+2); ij++)
+                    {
+                        if(!CORE.arrayID[ij]){
+                            id_temp = ij; 
+                            CORE.idDuplicate = 0; 
+                            break; 
+                        }
+                    }
+                    const updates = {};
+                    updates[ `/id`] =  id_temp;                
+                    firebase.database().ref("Eventos/"+k).update(updates);
+                    
+                        
+                }
+                if(!CORE.arrayID[id])
+                    GFX.createDivEventosDB(title, id, date,dateFin, hour, image, categoria, content, asistentes, key, asistenteskey, organizer,hourFin,ubi); 
             }
             LOGIC.ordenarEventDate(); 
             //LOGIC.cambiarIDIfRepite(); 

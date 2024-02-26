@@ -157,6 +157,8 @@ var LOGIC = {
                    var entra =0; 
                     for(let j=0; j<CORE.admins.length; j++)
                    {
+                    if(auth.currentUser != null)
+                    {
                         if(auth.currentUser.email)
                         {
                             if(auth.currentUser.email == LOGIC.decrypt_data(CORE.DicEvents[i].asistentes[AsistentPos].split('/')[1]) ||
@@ -181,12 +183,21 @@ var LOGIC = {
                                 }
                             }
                         }
+                    }
+                    else
+                    {
+                        alert('Inicia sesión'); 
+                        window.scrollTo(0, 0);
+                        GFX.togglePopupInitSesion(); 
+                        break; 
+                    }
+                       
                        
                     //    else
                     //    {
                         //    }
                     }
-                    if(entra==0)
+                    if(entra==0 && auth.currentUser != null)
                         alert("No eres el usuario que vas a borrar.");
                 }
             }
@@ -199,6 +210,7 @@ var LOGIC = {
         if(!auth.currentUser)
         {
             alert("Inicia Sesión"); 
+            window.scrollTo(0, 0);
             // firebase.auth().signInWithPopup(provider);
             GFX.togglePopupInitSesion(); 
         }
@@ -227,6 +239,7 @@ var LOGIC = {
         if(!auth.currentUser)
         {
             alert("Inicia Sesión"); 
+            window.scrollTo(0, 0);
             //firebase.auth().signInWithPopup(provider);
             GFX.togglePopupInitSesion(); 
         }

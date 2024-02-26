@@ -229,6 +229,7 @@ ul{
 /* NEWS EVENTS */
 
 .Evento{
+  width: 100% !important;
   /* background:  linear-gradient(to right bottom, #a4cd88 50%, #c3deb1 50.1%); */
   border-radius: 20px;
   padding-bottom: 20px;
@@ -313,7 +314,7 @@ ul{
 @media only screen and (min-width: 1500px) {
 
   .Evento{
-    width: 1000px;
+    /* width: 1000px; */
     margin-left: 20%;
   
   }

@@ -26,6 +26,7 @@ var CORE =
     paswordEliminar: "",
     paswordEdit: "",
     idEdit: -1, 
+    idDuplicate: -1, 
     editors : {},
     des_Horosc: "", 
     calendarEvents: [], 

@@ -415,6 +415,11 @@ ul{
   display: flex;
   position: relative;
 }
+.popup-Event-info .Evento
+{
+  width: 100% !important;
+}
+
 .Butt_Events
 {
   display: flex;
