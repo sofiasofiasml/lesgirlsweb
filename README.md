@@ -27,4 +27,3 @@ Explicación: [link](https://medium.com/front-end-chile/c%C3%B3mo-alojar-tu-siti
 
 - subir cambios al server: firebase deploy
 
-Contraseña para borrar: EliminarLesGirls, lo hace LOGIC.delateEvent
